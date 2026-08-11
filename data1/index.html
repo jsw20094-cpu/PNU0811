@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-smooth">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSW | Data Analytics & Research Portfolio</title>
+    <title>2025 서울캠퍼스 경영경제·사회과학 계열 교육 지표 종합 분석 보고서</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -11,1176 +11,678 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        rm: {
-                            dark: '#070E1B',
-                            navy: '#0B1E36',
-                            blue: '#00529F',
-                            lightBlue: '#1E73BE',
-                            gold: '#FEBE10',
-                            goldHover: '#E5A900',
-                            white: '#FFFFFF',
-                            cardBg: 'rgba(15, 30, 54, 0.75)'
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#0f172a'
+                        },
+                        biz: {
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            light: '#e0f2fe'
+                        },
+                        social: {
+                            500: '#7c3aed',
+                            600: '#6d28d9',
+                            light: '#f3e8ff'
                         }
                     },
                     fontFamily: {
                         sans: ['Noto Sans KR', 'sans-serif'],
-                        outfit: ['Outfit', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #070E1B;
-            color: #F3F4F6;
-            font-family: 'Noto Sans KR', sans-serif;
-            overflow-x: hidden;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
-
-        /* Hero Backgrounds per Theme */
-        .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(7, 14, 27, 0.6) 0%, rgba(7, 14, 27, 0.95) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(0, 82, 159, 0.4) 0%, rgba(7, 14, 27, 1) 75%),
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            transition: background 0.4s ease;
-        }
-
-        /* 1. Real Madrid Light Theme */
-        body.theme-rm-light {
-            background-color: #F8FAFC;
-            color: #0F172A;
-        }
-        body.theme-rm-light .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(248, 250, 252, 0.82) 0%, rgba(248, 250, 252, 0.98) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(0, 82, 159, 0.18) 0%, rgba(248, 250, 252, 1) 75%),
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        /* 2. Manchester City Theme (Sky Blue / Navy / Ice White) */
-        body.theme-mcfc {
-            background-color: #031329;
-            color: #E0F2FE;
-        }
-        body.theme-mcfc .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(3, 19, 41, 0.65) 0%, rgba(3, 19, 41, 0.98) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(108, 171, 221, 0.45) 0%, rgba(3, 19, 41, 1) 75%),
-                        url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        body.theme-mcfc .glass-card {
-            background: rgba(8, 30, 58, 0.75);
-            border-color: rgba(108, 171, 221, 0.25);
-        }
-        body.theme-mcfc .gold-gradient-text {
-            background: linear-gradient(135deg, #FFFFFF 0%, #6CABDD 50%, #38BDF8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body.theme-mcfc .gold-border-glow {
-            box-shadow: 0 0 20px rgba(108, 171, 221, 0.2);
-            border: 1px solid rgba(108, 171, 221, 0.4);
-        }
-        body.theme-mcfc .gold-border-glow:hover {
-            box-shadow: 0 0 30px rgba(108, 171, 221, 0.5);
-            border-color: rgba(56, 189, 248, 0.8);
-        }
-
-        /* 3. Manchester United Theme (Red Devils Crimson / Black / Warm Gold) */
-        body.theme-mufc {
-            background-color: #0D0203;
-            color: #FEE2E2;
-        }
-        body.theme-mufc .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(13, 2, 3, 0.68) 0%, rgba(13, 2, 3, 0.98) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(218, 2, 14, 0.4) 0%, rgba(13, 2, 3, 1) 75%),
-                        url('https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        body.theme-mufc .glass-card {
-            background: rgba(31, 7, 10, 0.75);
-            border-color: rgba(218, 2, 14, 0.3);
-        }
-        body.theme-mufc .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF 0%, #FF2A3B 50%, #FFE600 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body.theme-mufc .gold-border-glow {
-            box-shadow: 0 0 20px rgba(218, 2, 14, 0.25);
-            border: 1px solid rgba(218, 2, 14, 0.4);
-        }
-        body.theme-mufc .gold-border-glow:hover {
-            box-shadow: 0 0 30px rgba(218, 2, 14, 0.6);
-            border-color: rgba(255, 42, 59, 0.8);
-        }
-
-        /* Shared Light Mode overrides */
-        body.theme-rm-light .gold-gradient-text {
-            background: linear-gradient(135deg, #0B1E36 0%, #D49B00 60%, #00529F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body.theme-rm-light .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(11, 30, 54, 0.12);
-            box-shadow: 0 10px 25px -5px rgba(0, 82, 159, 0.08);
-        }
-        body.theme-rm-light .text-white { color: #0F172A !important; }
-        body.theme-rm-light .text-gray-300,
-        body.theme-rm-light .text-gray-400 { color: #475569 !important; }
-        body.theme-rm-light .bg-rm-dark,
-        body.theme-rm-light .bg-rm-navy { background-color: #FFFFFF !important; }
-
-        .glass-card {
-            background: rgba(15, 30, 54, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .gold-border-glow {
-            box-shadow: 0 0 20px rgba(254, 190, 16, 0.15);
-            border: 1px solid rgba(254, 190, 16, 0.3);
-        }
-        .gold-border-glow:hover {
-            box-shadow: 0 0 30px rgba(254, 190, 16, 0.4);
-            border-color: rgba(254, 190, 16, 0.8);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #070E1B;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #00529F;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FEBE10;
-        }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid #e2e8f0; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .tab-active { border-bottom: 3px solid #2563eb; color: #1d4ed8; font-weight: 700; }
     </style>
 </head>
-<body class="antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark">
+<body class="text-slate-800 antialiased min-h-screen flex flex-col custom-scrollbar">
 
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Left: Home Button & Brand Emblem -->
-                <div class="flex items-center gap-3">
-                    <!-- Home Button (Navigates to ../index.html) -->
-                    <a href="../index.html" title="홈으로 이동" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-rm-gold hover:text-rm-dark transition-all duration-200 border border-white/15 text-white font-bold text-xs shadow-sm">
-                        <i class="fa-solid fa-house text-sm"></i>
-                        <span class="hidden sm:inline">홈</span>
-                    </a>
-
-                    <!-- Brand Logo / Emblem -->
-                    <a href="#" class="flex items-center gap-3 group ml-1">
-                        <!-- Dynamic Club Emblem Container -->
-                        <div id="brandEmblemContainer" class="w-11 h-11 flex-shrink-0 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_10px_rgba(254,190,16,0.3)]">
-                            <!-- Injected via JS -->
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="font-outfit font-extrabold text-xl tracking-wider text-white flex items-center gap-2">
-                                JSW <span id="clubBadgeTag" class="text-xs px-2 py-0.5 rounded bg-rm-blue/60 text-rm-gold font-mono uppercase tracking-widest border border-rm-gold/30">RM Analytics</span>
-                            </span>
-                            <span id="clubSlogan" class="text-[10px] text-gray-400 font-mono">Hala Madrid y nada más</span>
-                        </div>
-                    </a>
+    <!-- Top Header / Executive Bar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid me-0.5 fa-chart-line text-xl text-white"></i>
                 </div>
-
-                <!-- Desktop Nav Links -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#about" class="text-sm font-medium hover:text-rm-gold transition-colors">소개 (About)</a>
-                    <a href="#reports" class="text-sm font-medium hover:text-rm-gold transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-chart-line text-rm-gold"></i> 주요 분석 보고서
-                    </a>
-                    <a href="#timeline" class="text-sm font-medium hover:text-rm-gold transition-colors">활동 내역</a>
-                    <a href="#skills" class="text-sm font-medium hover:text-rm-gold transition-colors">기술 스택</a>
-                </div>
-
-                <!-- Theme Switcher Controls -->
-                <div class="hidden md:flex items-center gap-3">
-                    <span class="text-[11px] font-mono text-gray-400 font-bold hidden xl:inline"><i class="fa-solid fa-futbol mr-1"></i>CLUB THEME:</span>
-                    <div class="flex items-center bg-black/40 p-1 rounded-xl border border-white/10 gap-1 text-xs font-mono font-bold">
-                        <button onclick="setTheme('rm-dark')" id="btn-rm-dark" title="Real Madrid Dark" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-rm-gold bg-rm-blue/40 border border-rm-gold/40">
-                            <span class="w-4 h-4 inline-block align-middle" id="miniCrestRM"></span>
-                            <span class="hidden sm:inline">RM</span>
-                        </button>
-                        <button onclick="setTheme('rm-light')" id="btn-rm-light" title="Real Madrid Light" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-300 hover:text-white">
-                            <span>⚪</span>
-                            <span class="hidden sm:inline">Light</span>
-                        </button>
-                        <button onclick="setTheme('mcfc')" id="btn-mcfc" title="Manchester City Mode" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-300 hover:text-sky-300">
-                            <span class="w-4 h-4 inline-block align-middle" id="miniCrestMCFC"></span>
-                            <span class="hidden sm:inline">MCFC</span>
-                        </button>
-                        <button onclick="setTheme('mufc')" id="btn-mufc" title="Manchester United Mode" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-300 hover:text-red-400">
-                            <span class="w-4 h-4 inline-block align-middle" id="miniCrestMUFC"></span>
-                            <span class="hidden sm:inline">MUFC</span>
-                        </button>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-900/80 text-blue-300 text-xs px-2.5 py-0.5 rounded-full font-semibold border border-blue-700/50">2025 정밀 분석</span>
+                        <span class="text-slate-400 text-xs">서울 캠퍼스 주요 인문사회 계열</span>
                     </div>
-
-                    <a href="#reports" id="navCtaBtn" class="px-4 py-2 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-bold text-xs hover:shadow-[0_0_15px_rgba(254,190,16,0.6)] transition-all">
-                        <i class="fa-solid fa-file-invoice mr-1"></i> 보고서 열람
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button & Mobile Theme Selector -->
-                <div class="md:hidden flex items-center gap-2">
-                    <select onchange="setTheme(this.value)" id="mobileThemeSelect" class="bg-rm-navy text-xs text-rm-gold border border-rm-gold/40 rounded-lg px-2 py-1 font-mono font-bold">
-                        <option value="rm-dark">👑 RM Dark</option>
-                        <option value="rm-light">⚪ RM Light</option>
-                        <option value="mcfc">🩵 맨시티</option>
-                        <option value="mufc">🔴 맨유</option>
-                    </select>
-                    <button id="mobileMenuBtn" class="text-gray-300 hover:text-white p-2">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
+                    <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white mt-0.5">경영경제 및 사회과학 계열 교육 지표 종합 분석 보고서</h1>
                 </div>
             </div>
+            <div class="flex items-center space-x-3">
+                <div class="text-right hidden sm:block">
+                    <p class="text-xs text-slate-400">작성 관점</p>
+                    <p class="text-xs font-semibold text-slate-200"><i class="fa-solid fa-user-shield text-blue-400 mr-1"></i>대학 교육 정책 수석 분석관</p>
+                </div>
+                <a href="../index.html" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3 py-2 rounded-lg border border-slate-700 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-house"></i>
+                    <span>홈</span>
+                </a>
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3 py-2 rounded-lg border border-slate-700 transition flex items-center space-x-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span>보고서 인쇄/PDF</span>
+                </button>
+            </div>
         </div>
+    </header>
 
-        <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden bg-rm-navy/95 backdrop-blur-xl border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
-            <a href="../index.html" class="flex items-center gap-2 py-2 text-base font-bold text-rm-gold hover:text-white border-b border-white/10">
-                <i class="fa-solid fa-house"></i> 홈으로 이동 (../index.html)
-            </a>
-            <a href="#about" class="block py-2 text-base font-medium text-gray-200 hover:text-rm-gold">소개 (About)</a>
-            <a href="#reports" class="block py-2 text-base font-medium text-rm-gold">주요 분석 보고서</a>
-            <a href="#timeline" class="block py-2 text-base font-medium text-gray-200 hover:text-rm-gold">활동 내역</a>
-            <a href="#skills" class="block py-2 text-base font-medium text-gray-200 hover:text-rm-gold">기술 스택</a>
-        </div>
-    </nav>
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
 
-    <!-- Hero Section -->
-    <section class="rm-hero-bg min-h-screen pt-32 pb-20 flex items-center relative overflow-hidden">
-        <!-- Decorative Glow Orbs -->
-        <div id="orbLeft" class="absolute top-1/4 left-10 w-96 h-96 bg-rm-blue/20 rounded-full filter blur-[120px] pointer-events-none"></div>
-        <div id="orbRight" class="absolute bottom-10 right-10 w-96 h-96 bg-rm-gold/15 rounded-full filter blur-[140px] pointer-events-none"></div>
+        <!-- Key Metrics Summary Grid -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <!-- Metric 1 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">분석 대상 학과</span>
+                    <span class="p-2 bg-blue-50 text-blue-600 rounded-lg text-sm"><i class="fa-solid fa-university"></i></span>
+                </div>
+                <div class="mt-3 flex items-baseline justify-between">
+                    <span class="text-2xl font-extrabold text-slate-900">12개 학과</span>
+                    <span class="text-xs font-medium text-slate-500">2개 중분류 계열</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">입학정원 0명 2개 학과 제외</p>
+            </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Hero Left: Text Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div id="heroBadge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-rm-gold/40 text-rm-gold text-xs font-semibold uppercase tracking-wider">
-                        <i id="heroBadgeIcon" class="fa-solid fa-shield-halved"></i> <span id="heroBadgeText">Real Madrid Spirit Data Analyst</span>
+            <!-- Metric 2 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">총 입학정원</span>
+                    <span class="p-2 bg-indigo-50 text-indigo-600 rounded-lg text-sm"><i class="fa-solid fa-users"></i></span>
+                </div>
+                <div class="mt-3 flex items-baseline justify-between">
+                    <span class="text-2xl font-extrabold text-slate-900">951 명</span>
+                    <span class="text-xs font-medium text-blue-600 font-semibold">경영경제 60.8%</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">경영경제 578명 / 사회과학 373명</p>
+            </div>
+
+            <!-- Metric 3 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">평균 신입생 경쟁률</span>
+                    <span class="p-2 bg-amber-50 text-amber-600 rounded-lg text-sm"><i class="fa-solid fa-[#f59e0b] fa-fire"></i></span>
+                </div>
+                <div class="mt-3 flex items-baseline justify-between">
+                    <span class="text-2xl font-extrabold text-slate-900">15.1 : 1</span>
+                    <span class="text-xs font-semibold text-purple-600">사회과학 최고 (18.4)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">최고: 글로벌한국융합 (18.4:1)</p>
+            </div>
+
+            <!-- Metric 4 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">최고 취업률 학과</span>
+                    <span class="p-2 bg-emerald-50 text-emerald-600 rounded-lg text-sm"><i class="fa-solid fa-briefcase"></i></span>
+                </div>
+                <div class="mt-3 flex items-baseline justify-between">
+                    <span class="text-2xl font-extrabold text-slate-900">81.3%</span>
+                    <span class="text-xs font-bold text-emerald-600">경영학과</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">경영경제 평균: 74.85%</p>
+            </div>
+
+            <!-- Metric 5 -->
+            <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-200/80 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-500 uppercase">등록금 최고 편차</span>
+                    <span class="p-2 bg-rose-50 text-rose-600 rounded-lg text-sm"><i class="fa-solid fa-won-sign"></i></span>
+                </div>
+                <div class="mt-3 flex items-baseline justify-between">
+                    <span class="text-2xl font-extrabold text-slate-900">851.2 만원</span>
+                    <span class="text-xs font-bold text-rose-600">+13.1% 프리미엄</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">심리학부 (기본 752.7만원)</p>
+            </div>
+        </section>
+
+        <!-- SECTION 1: 분석 개요 및 대상 선정 기준 -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-100 gap-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md">Section 1</span>
+                        <span class="text-xs text-slate-400">|</span>
+                        <span class="text-xs text-slate-500">진단 목적 및 원칙</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">1. 분석 개요 및 대상 선정 기준</h2>
+                </div>
+                <div class="bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-info text-blue-500 text-sm"></i>
+                    <span><strong>ROI 분석 핵심:</strong> 학과별 운영 효율성과 교육 투자 대비 성과(취업 및 경쟁력) 진단</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <!-- Selection Criteria Card -->
+                <div class="bg-slate-50/70 rounded-xl p-5 border border-slate-200/80">
+                    <h3 class="text-sm font-bold text-slate-900 flex items-center space-x-2 mb-3">
+                        <i class="fa-solid fa-filter text-blue-600"></i>
+                        <span>최종 분석 대상 선정 및 제외 기준</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs text-slate-600">
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                            <span><strong>포함 대상:</strong> 서울 캠퍼스 소재 학과 중 표준분류계열(중) 기준 <strong>'경영·경제'</strong> 및 <strong>'사회과학'</strong> 학과</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-0.5"></i>
+                            <span><strong>제외 대상 (입학정원 0명):</strong> 글로벌엔터테인먼트학부, 글로벌자율학부 (실제 운영 및 선발 데이터 유효성 부재)</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-ban text-slate-400 mt-0.5"></i>
+                            <span><strong>범위 외 배제:</strong> 세종 캠퍼스 및 대학원 데이터는 보고서 목적 범위를 벗어나므로 제외함</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4 Core Metrics Card -->
+                <div class="bg-slate-50/70 rounded-xl p-5 border border-slate-200/80">
+                    <h3 class="text-sm font-bold text-slate-900 flex items-center space-x-2 mb-3">
+                        <i class="fa-solid fa-sliders text-indigo-600"></i>
+                        <span>4대 핵심 분석 지표 정의</span>
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-blue-700">① 입학정원</span>
+                            <span class="text-slate-500">교육 자원 배정 규모 및 모집 정원</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-amber-700">② 신입생 경쟁률</span>
+                            <span class="text-slate-500">시장 내 브랜드 가치 및 입시 수요</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-emerald-700">③ 취업률 (%)</span>
+                            <span class="text-slate-500">최종 교육 산출물 및 사회진출 성과</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-slate-800 block text-rose-700">④ 평균 등록금</span>
+                            <span class="text-slate-500">학생 직접 투자 비용 및 학과 원가</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 & 3: 계열별 데이터 및 정밀 세부 분석 -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-4 border-b border-slate-100 gap-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50 px-2.5 py-1 rounded-md">Section 2 & 3</span>
+                        <span class="text-xs text-slate-400">|</span>
+                        <span class="text-xs text-slate-500">계열별 세부 지표 탐색</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">2 & 3. 경영경제 vs 사회과학 계열 세부 분석</h2>
+                </div>
+
+                <!-- Interactive Filters & Tab Controls -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="bg-slate-100 p-1 rounded-xl flex items-center text-xs font-semibold">
+                        <button onclick="filterCategory('all')" id="btn-cat-all" class="cat-btn px-3 py-1.5 rounded-lg bg-white text-blue-600 shadow-sm transition">전체 (12개)</button>
+                        <button onclick="filterCategory('경영경제')" id="btn-cat-biz" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">경영경제 (4개)</button>
+                        <button onclick="filterCategory('사회과학')" id="btn-cat-social" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">사회과학 (8개)</button>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        데이터로 시야를 넓히고,<br>
-                        <span class="gold-gradient-text">JSW의 가치</span>를 증명합니다.
-                    </h1>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" onkeyup="renderTable()" placeholder="학과명 검색..." class="pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 w-36 sm:w-48">
+                    </div>
+                </div>
+            </div>
 
-                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
-                        공공 데이터와 사회 지표 속 잠재된 패턴을 발굴합니다.<br class="hidden sm:block">
-                        <strong>대학알리미</strong>의 교육·진로 데이터와 <strong>도로교통공단</strong>의 교통 안전 분석을 통합하여 Insight를 창출하는 데이터 분석가 JSW입니다.
+            <!-- Department Data Interactive Table -->
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600">
+                            <th class="py-3 px-4 cursor-pointer hover:bg-slate-100 transition" onclick="sortTable('category')">계열 <i class="fa-solid fa-sort text-slate-400 text-[10px]"></i></th>
+                            <th class="py-3 px-4 cursor-pointer hover:bg-slate-100 transition" onclick="sortTable('name')">학과명 <i class="fa-solid fa-sort text-slate-400 text-[10px]"></i></th>
+                            <th class="py-3 px-4 cursor-pointer hover:bg-slate-100 transition text-right" onclick="sortTable('quota')">입학정원 (명) <i class="fa-solid fa-sort text-slate-400 text-[10px]"></i></th>
+                            <th class="py-3 px-4 cursor-pointer hover:bg-slate-100 transition text-right" onclick="sortTable('competition')">신입생 경쟁률 (n:1) <i class="fa-solid fa-sort text-slate-400 text-[10px]"></i></th>
+                            <th class="py-3 px-4 cursor-pointer hover:bg-slate-100 transition text-right" onclick="sortTable('employment')">취업률 (%) <i class="fa-solid fa-sort text-slate-400 text-[10px]"></i></th>
+                            <th class="py-3 px-4 cursor-pointer hover:bg-slate-100 transition text-right" onclick="sortTable('tuition')">평균 등록금 (원) <i class="fa-solid fa-sort text-slate-400 text-[10px]"></i></th>
+                            <th class="py-3 px-4 text-center">특이사항 / ROI 평가</th>
+                        </tr>
+                    </thead>
+                    <tbody id="departmentTableBody" class="divide-y divide-slate-100 text-xs text-slate-700">
+                        <!-- Dynamic JavaScript rendering -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-between items-center text-xs text-slate-500 pt-1">
+                <span>* 각 컬럼 헤더를 클릭하면 오름차순/내림차순 정렬이 가능합니다.</span>
+                <span class="bg-slate-100 px-2 py-1 rounded text-slate-600"><i class="fa-solid fa-circle-exclamation text-amber-500 mr-1"></i>취업률 데이터 미집계: 신설 학과 또는 보고 시점 통계 미달 학과</span>
+            </div>
+
+            <!-- Deep Dive Analysis Split Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
+                <!-- Biz Econ Analysis Card -->
+                <div class="bg-gradient-to-br from-sky-50/50 to-blue-50/30 rounded-xl p-5 border border-sky-200/80 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-sky-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full">경영경제 계열 세부 평가</span>
+                        <span class="text-xs font-bold text-sky-700">Low-Cost, High-Return</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">규모의 경제 기반 고효율 선순환 모델</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        압도적인 정원 규모(경영학과 320명)가 우수한 취업 성과로 직결되는 강력한 구조를 형성하고 있습니다. 경영학과는 계열 최고 취업률인 <strong>81.3%</strong>를 기록하며, 대규모 인적 네트워크와 실무 인프라의 시너지를 증명했습니다.
                     </p>
-
-                    <!-- Key Badges -->
-                    <div class="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <div class="flex items-center gap-3 px-4 py-3 rounded-xl glass-card border-l-4 border-rm-gold">
-                            <i class="fa-solid fa-graduation-cap text-rm-gold text-xl"></i>
-                            <div class="text-left">
-                                <p class="text-xs text-gray-400">진로 보고서</p>
-                                <p class="text-sm font-bold text-white">대학알리미 API/Data</p>
-                            </div>
+                    <div class="bg-white p-3 rounded-lg border border-sky-100 space-y-1.5 text-xs">
+                        <div class="flex justify-between font-semibold">
+                            <span class="text-slate-600">계열 평균 취업률</span>
+                            <span class="text-sky-700 font-bold">74.85%</span>
                         </div>
-
-                        <div class="flex items-center gap-3 px-4 py-3 rounded-xl glass-card border-l-4 border-rm-blue">
-                            <i class="fa-solid fa-car-burst text-rm-blue text-xl"></i>
-                            <div class="text-left">
-                                <p class="text-xs text-gray-400">교통 데이터 보고서</p>
-                                <p class="text-sm font-bold text-white">도로교통공단 Big Data</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Call to Action Buttons -->
-                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#reports" id="heroCtaPrimary" class="px-8 py-4 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-extrabold text-base shadow-[0_0_25px_rgba(254,190,16,0.5)] hover:shadow-[0_0_35px_rgba(254,190,16,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-chart-pie"></i> 분석 보고서 즉시 확인
-                        </a>
-                        <a href="#timeline" class="px-8 py-4 rounded-xl glass-card text-white font-bold text-base hover:bg-white/10 transition-all border border-white/20 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-user-astronaut"></i> JSW 히스토리
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Hero Right: Dynamic Club Inspired Player Card Display -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div id="playerCardWrap" class="relative w-full max-w-sm rounded-2xl p-1 bg-gradient-to-b from-rm-gold via-rm-blue to-transparent gold-border-glow transition-all duration-500 hover:scale-105">
-                        <div class="bg-rm-navy/90 rounded-2xl p-6 relative overflow-hidden backdrop-blur-xl">
-                            <!-- Madrid Crest & Card Header -->
-                            <div class="flex justify-between items-start mb-6 border-b border-white/10 pb-4">
-                                <div>
-                                    <span class="text-xs uppercase tracking-widest text-rm-gold font-mono font-semibold">OVERALL RATING</span>
-                                    <div class="text-5xl font-black font-outfit text-white">99 <span class="text-sm text-rm-gold">OVR</span></div>
-                                </div>
-                                <div class="text-right flex flex-col items-end">
-                                    <!-- Dynamic Player Card Crest Emblem -->
-                                    <div id="cardCrestContainer" class="w-12 h-14 transition-transform duration-300 hover:scale-110">
-                                        <!-- Injected via JS -->
-                                    </div>
-                                    <div id="cardRoleText" class="text-[11px] text-gray-400 mt-1 font-mono">ROLE: RM ANALYST</div>
-                                </div>
-                            </div>
-
-                            <!-- Avatar & Position -->
-                            <div class="flex items-center gap-5 my-6">
-                                <div id="avatarBorder" class="w-20 h-20 rounded-full bg-gradient-to-tr from-rm-blue via-rm-navy to-rm-gold p-1 shadow-inner flex-shrink-0">
-                                    <div class="w-full h-full rounded-full bg-rm-dark flex items-center justify-center text-3xl text-rm-gold font-black">
-                                        JSW
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-black text-white tracking-wide">JSW (정성우)</h3>
-                                    <p id="cardSubtext" class="text-xs text-rm-gold font-mono">Data Science & Policy Analytics</p>
-                                    <div class="mt-2 flex gap-1 text-[10px]">
-                                        <span class="bg-rm-blue/40 text-blue-200 px-2 py-0.5 rounded border border-rm-blue/50">Python</span>
-                                        <span class="bg-rm-gold/20 text-rm-gold px-2 py-0.5 rounded border border-rm-gold/40">SQL</span>
-                                        <span class="bg-purple-900/40 text-purple-200 px-2 py-0.5 rounded border border-purple-500/40">Tableau</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FIFA/EA-Style Stats Grid -->
-                            <div class="grid grid-cols-2 gap-3 text-xs font-mono pt-2 border-t border-white/10">
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">DAT (데이터수집)</span>
-                                    <span class="font-bold text-rm-gold">97</span>
-                                </div>
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">VIS (시각화)</span>
-                                    <span class="font-bold text-rm-gold">98</span>
-                                </div>
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">STA (통계분석)</span>
-                                    <span class="font-bold text-rm-gold">95</span>
-                                </div>
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">PAS (열정/도전)</span>
-                                    <span class="font-bold text-rm-gold">99</span>
-                                </div>
-                            </div>
-
-                            <!-- Footer Quote -->
-                            <div id="cardQuoteText" class="mt-5 text-center text-[11px] text-gray-400 italic">
-                                "¡Hala Madrid! 경기의 흐름을 바꾸듯, 데이터로 인사이트를 지배합니다."
-                            </div>
+                        <div class="flex justify-between font-semibold">
+                            <span class="text-slate-600">등록금 표준화 수준</span>
+                            <span class="text-slate-800">약 7,527,750원 (통계학과 7,532,322원)</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Social Sci Analysis Card -->
+                <div class="bg-gradient-to-br from-purple-50/50 to-indigo-50/30 rounded-xl p-5 border border-purple-200/80 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-purple-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full">사회과학 계열 세부 평가</span>
+                        <span class="text-xs font-bold text-purple-700">High-Demand, High-Variance</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">최상위 입시 선호도 & 비용·성과 편차</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        신입생 경쟁률에서 경영경제 계열을 크게 능가합니다. <strong>글로벌한국융합학부(18.4:1)</strong>, <strong>국제학부(17.9:1)</strong> 등 소수정예/융복합 학과가 강력한 수요를 이끌고 있으나, 취업률 미집계 및 고비용 구조 학과의 관리가 요구됩니다.
+                    </p>
+                    <div class="bg-white p-3 rounded-lg border border-purple-100 space-y-1.5 text-xs">
+                        <div class="flex justify-between font-semibold">
+                            <span class="text-slate-600">심리학부 등록금 프리미엄</span>
+                            <span class="text-purple-700 font-bold">8,511,631원 (계열 평균 대비 +13% 이상)</span>
+                        </div>
+                        <div class="flex justify-between font-semibold">
+                            <span class="text-slate-600">견고한 성과 학과</span>
+                            <span class="text-slate-800">사회학과(74.6%), 보건정책관리학부(73.1%)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Data Analysis Reports Showcase Section -->
-    <section id="reports" class="py-24 bg-rm-dark/95 relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Title Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <span class="text-rm-gold font-mono text-sm uppercase tracking-widest font-bold">CORE PROJECTS & REPORTS</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                    주요 데이터 분석 보고서
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-rm-blue to-rm-gold mx-auto rounded-full"></div>
-                <p class="text-gray-400 text-sm sm:text-base">
-                    공공 빅데이터를 다각도로 분석하여 작성된 JSW의 대표 보고서입니다.<br>각 카드를 클릭하면 상세 인터랙티브 차트 및 요약 보고서를 확인할 수 있습니다.
-                </p>
+        <!-- SECTION 4: 계열 간 비교 분석 및 ROI 매트릭스 -->
+        <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-100 gap-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md">Section 4</span>
+                        <span class="text-xs text-slate-400">|</span>
+                        <span class="text-xs text-slate-500">등록금 - 취업률 연계 분석</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-1">4. 계열 간 비교: 등록금 수준과 취업률 성과 연계</h2>
+                </div>
+                <div class="text-xs text-slate-500 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+                    <i class="fa-solid fa-chart-bubble text-emerald-600 mr-1"></i> 버블 크기: 학과 입학정원 규모
+                </div>
             </div>
 
-            <!-- Cards Grid (2 Major Reports) -->
+            <!-- Charts Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                <!-- CARD 1: 대학알리미 진로 보고서 -->
-                <div class="glass-card rounded-2xl p-6 sm:p-8 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative group">
-                    <div class="absolute top-4 right-4 bg-rm-gold/20 text-rm-gold border border-rm-gold/40 text-xs font-bold px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
-                        <i class="fa-solid fa-graduation-cap"></i> 대학알리미
-                    </div>
-
-                    <div>
-                        <!-- Icon Header -->
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-rm-gold flex items-center justify-center text-rm-dark text-2xl font-black mb-6 shadow-lg">
-                            <i class="fa-solid fa-user-graduate"></i>
-                        </div>
-
-                        <h3 class="text-2xl font-bold text-white group-hover:text-rm-gold transition-colors mb-3">
-                            대학알리미 데이터 기반<br>전국 대학 진로 & 취업 실태 분석 보고서
+                <!-- Chart 1: Competition vs Employment Bar/Line Combination -->
+                <div class="bg-slate-50/50 p-4 sm:p-5 rounded-2xl border border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-column text-blue-600"></i>
+                            <span>학과별 입시 경쟁률 vs 취업률 성과</span>
                         </h3>
-
-                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                            교육부 '대학알리미(Academy Info)' 공시 데이터를 기반으로 계열별 취업률, 대학원 진학률, 주요 전공별 직무 연계성 및 필요 스킬셋 패러다임을 정밀 분석한 진로 보고서입니다.
-                        </p>
-
-                        <!-- Key Metrics Mini-Stats -->
-                        <div class="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-rm-navy/60 border border-white/5">
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">분석 대학 수</span>
-                                <span class="text-base font-extrabold text-rm-gold">224개교</span>
-                            </div>
-                            <div class="text-center border-x border-white/10">
-                                <span class="block text-[11px] text-gray-400">평균 취업률</span>
-                                <span class="text-base font-extrabold text-white">67.2%</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">주요 스킬 지표</span>
-                                <span class="text-base font-extrabold text-blue-400">Data & AI</span>
-                            </div>
-                        </div>
-
-                        <!-- Highlights Tags -->
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">계열별 취업 격차</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">진학 vs 취업 트렌드</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">역량 매핑</span>
-                        </div>
+                        <span class="text-[11px] text-slate-500">경쟁률과 취업률의 역설 관찰</span>
                     </div>
-
-                    <!-- Action Button -->
-                    <a href="./data1/index.html" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-extrabold text-sm hover:shadow-[0_0_20px_rgba(254,190,16,0.6)] transition-all flex items-center justify-center gap-2 text-center">
-                        <i class="fa-solid fa-chart-column"></i> 진로 보고서 대시보드 열람
-                    </a>
+                    <div class="h-80 relative">
+                        <canvas id="compVsEmpChart"></canvas>
+                    </div>
                 </div>
 
-                <!-- CARD 2: 도로교통공단 교통 데이터분석 보고서 -->
-                <div class="glass-card rounded-2xl p-6 sm:p-8 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative group">
-                    <div class="absolute top-4 right-4 bg-rm-blue/30 text-blue-300 border border-rm-blue/50 text-xs font-bold px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
-                        <i class="fa-solid fa-car"></i> 도로교통공단
-                    </div>
-
-                    <div>
-                        <!-- Icon Header -->
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rm-blue to-blue-600 flex items-center justify-center text-white text-2xl font-black mb-6 shadow-lg">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                        </div>
-
-                        <h3 class="text-2xl font-bold text-white group-hover:text-rm-gold transition-colors mb-3">
-                            도로교통공단 데이터 기반<br>교통사고 위험 요인 및 패턴 분석 보고서
+                <!-- Chart 2: ROI Matrix Scatter Plot (Tuition vs Employment) -->
+                <div class="bg-slate-50/50 p-4 sm:p-5 rounded-2xl border border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-bullseye text-purple-600"></i>
+                            <span>교육 투자 대비 성과(ROI) 포지셔닝 맵</span>
                         </h3>
-
-                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                            도로교통공단 TASS(교통사고분석시스템) 빅데이터를 분석하여 시간대별, 기상 상황별, 도로 유형별 사고 위험지수(Risk Index)를 산출하고 사고 예방 정책안을 도출한 안전 분석 보고서입니다.
-                        </p>
-
-                        <!-- Key Metrics Mini-Stats -->
-                        <div class="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-rm-navy/60 border border-white/5">
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">분석 건수</span>
-                                <span class="text-base font-extrabold text-rm-gold">18만+ 건</span>
-                            </div>
-                            <div class="text-center border-x border-white/10">
-                                <span class="block text-[11px] text-gray-400">위험 최고시간</span>
-                                <span class="text-base font-extrabold text-red-400">22시~02시</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">핵심 변수</span>
-                                <span class="text-base font-extrabold text-blue-400">야간/빗길</span>
-                            </div>
-                        </div>
-
-                        <!-- Highlights Tags -->
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">치사율 위험지수</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">사고 원인 세분화</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">안전 정책 제안</span>
-                        </div>
+                        <span class="text-[11px] text-slate-500">등록금(X) vs 취업률(Y)</span>
                     </div>
-
-                    <!-- Action Button -->
-                    <a href="./data2/index.html" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-rm-blue to-blue-600 text-white font-extrabold text-sm hover:shadow-[0_0_20px_rgba(0,82,251,0.6)] transition-all flex items-center justify-center gap-2 text-center">
-                        <i class="fa-solid fa-chart-line"></i> 교통 분석 보고서 대시보드 열람
-                    </a>
+                    <div class="h-80 relative">
+                        <canvas id="roiMatrixChart"></canvas>
+                    </div>
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Activity Timeline Section -->
-    <section id="timeline" class="py-24 bg-rm-navy/40 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-rm-gold font-mono text-sm uppercase tracking-widest font-bold">JSW ACTIVITY HISTORY</span>
-                <h2 class="text-3xl font-bold text-white">활동 내역 & 데이터 여정</h2>
-                <div class="w-16 h-1 bg-rm-gold mx-auto rounded-full"></div>
             </div>
 
-            <div class="relative border-l-2 border-rm-blue/40 ml-4 md:ml-32 space-y-12">
-
-                <!-- Timeline Item 1 -->
-                <div class="relative pl-8 md:pl-12">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-rm-gold text-rm-dark flex items-center justify-center text-sm font-bold shadow-lg">
-                        <i class="fa-solid fa-award"></i>
+            <!-- Qualitative Key Findings Narrative Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-200/80 space-y-2">
+                    <div class="flex items-center space-x-2 text-blue-800 font-bold text-xs">
+                        <i class="fa-solid fa-scale-unbalanced text-blue-600"></i>
+                        <span>등록금 편차 분석</span>
                     </div>
-                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-rm-gold font-bold">
-                        2026.01 - PRESENT
-                    </div>
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-rm-gold">
-                        <span class="md:hidden text-xs font-mono text-rm-gold font-bold block mb-1">2026.01 - PRESENT</span>
-                        <h3 class="text-lg font-bold text-white">공공데이터 활용 데이터 분석 프로젝트 리드</h3>
-                        <p class="text-sm text-gray-300 mt-2">
-                            대학알리미 및 도로교통공단 오픈 API 데이터를 연계한 종합 포트폴리오 웹 시각화 구축. 데이터 정제부터 인사이트 도출 보고서 통합 작성.
-                        </p>
-                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        대부분 학과가 연 752만 원선인 반면, <strong>심리학부(851만 원)</strong>와 <strong>미디어학부(768만 원)</strong>는 실습 인프라 요구로 비용 할증이 발생하고 있습니다.
+                    </p>
                 </div>
 
-                <!-- Timeline Item 2 -->
-                <div class="relative pl-8 md:pl-12">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-rm-blue text-white flex items-center justify-center text-sm font-bold shadow-lg">
-                        <i class="fa-solid fa-laptop-code"></i>
+                <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                    <div class="flex items-center space-x-2 text-emerald-800 font-bold text-xs">
+                        <i class="fa-solid fa-arrow-trend-up text-emerald-600"></i>
+                        <span>투자 대비 성과 (ROI)</span>
                     </div>
-                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-gray-400 font-bold">
-                        2025.07 - 2025.12
-                    </div>
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-rm-blue">
-                        <span class="md:hidden text-xs font-mono text-gray-400 font-bold block mb-1">2025.07 - 2025.12</span>
-                        <h3 class="text-lg font-bold text-white">빅데이터 분석 및 통계 모델링 스터디 리더</h3>
-                        <p class="text-sm text-gray-300 mt-2">
-                            Python(Pandas, Seaborn)과 R을 활용한 시계열 데이터 분석 및 머신러닝 회귀 모델 연구. 팀 내 프로젝트 총괄 및 보고서 기획.
-                        </p>
-                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        경영경제는 <strong> Low-Cost, High-Return </strong> 모델의 정석인 반면, 사회과학 일부 학과는 고비용 또는 성과 미집계로 <strong> High-Cost, Unknown-Return </strong> 위험을 내포합니다.
+                    </p>
                 </div>
 
-                <!-- Timeline Item 3 -->
-                <div class="relative pl-8 md:pl-12">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-700 text-rm-gold flex items-center justify-center text-sm font-bold shadow-lg">
-                        <i class="fa-solid fa-certificate"></i>
+                <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-200/80 space-y-2">
+                    <div class="flex items-center space-x-2 text-purple-800 font-bold text-xs">
+                        <i class="fa-solid fa-masks-theater text-purple-600"></i>
+                        <span>경쟁률과 선호도의 역설</span>
                     </div>
-                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-gray-400 font-bold">
-                        2025.03 - 2025.06
-                    </div>
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-slate-500">
-                        <span class="md:hidden text-xs font-mono text-gray-400 font-bold block mb-1">2025.03 - 2025.06</span>
-                        <h3 class="text-lg font-bold text-white">데이터 분석 자격 및 정책 과제 연구</h3>
-                        <p class="text-sm text-gray-300 mt-2">
-                            ADsP(데이터분석 준전문가) 및 SQLD 자격 취득과 공공 정책 데이터 가공 방법론 습득.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section id="skills" class="py-20 bg-rm-dark relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-                <span class="text-rm-gold font-mono text-sm uppercase tracking-widest font-bold">ANALYTICAL CAPABILITIES</span>
-                <h2 class="text-3xl font-bold text-white">기술 스택 & 핵심 역량</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-rm-blue to-rm-gold mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-brands fa-python text-3xl text-yellow-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Python</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Pandas, Scikit-learn</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-database text-3xl text-blue-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">SQL</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">MySQL, PostgreSQL</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-chart-simple text-3xl text-rm-gold mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Tableau</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Interactive Dashboards</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-file-excel text-3xl text-emerald-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Excel/R</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Statistical Modeling</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-code text-3xl text-sky-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">API Integration</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Public Open Data</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-lightbulb text-3xl text-amber-300 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Insight Proposal</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Policy & Career Strategy</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        취업 성과는 경영경제가 월등하나, 입시 경쟁률은 사회과학이 더 높습니다. 수험생들이 산출 지표(취업)보다 학문 가치/브랜드 선호도에 반응함을 입증합니다.
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- SECTION 5: 종합 결론 및 정책 제언 -->
+        <section class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-wider bg-blue-950 px-2.5 py-1 rounded-md border border-blue-800">Section 5</span>
+                        <span class="text-slate-600">|</span>
+                        <span class="text-xs text-slate-400">대학 당국을 위한 전략 제언</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mt-1">5. 종합 결론 및 전략적 정책 제언</h2>
+                </div>
+                <div class="bg-blue-600/20 text-blue-300 border border-blue-500/30 px-4 py-2 rounded-xl text-xs flex items-center space-x-2">
+                    <i class="fa-solid fa-lightbulb text-amber-400 text-sm"></i>
+                    <span><strong>최종 제언:</strong> 입시 선호도를 실질적 취업 성과로 전환하는 커리큘럼 강화 필요</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Action Card 1 -->
+                <div class="bg-slate-800/90 rounded-xl p-5 border border-slate-700/80 space-y-3 relative overflow-hidden group hover:border-blue-500/50 transition">
+                    <div class="w-1 h-full bg-blue-500 absolute left-0 top-0"></div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-blue-400 font-bold uppercase">제언 01</span>
+                        <span class="p-2 bg-slate-700 text-blue-400 rounded-lg text-xs"><i class="fa-solid fa-chart-pie"></i></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">성과 기반 자원 배분 및 모델 전이</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        경영학과는 최대 정원(320명)과 최상위 취업률(81.3%)을 증명한 핵심 성과 학과입니다. 경영학과의 실무 지향적 인프라 및 산학 연계 운영 노하우를 타 계열 학과에 이식해야 합니다.
+                    </p>
+                </div>
+
+                <!-- Action Card 2 -->
+                <div class="bg-slate-800/90 rounded-xl p-5 border border-slate-700/80 space-y-3 relative overflow-hidden group hover:border-amber-500/50 transition">
+                    <div class="w-1 h-full bg-amber-500 absolute left-0 top-0"></div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-amber-400 font-bold uppercase">제언 02</span>
+                        <span class="p-2 bg-slate-700 text-amber-400 rounded-lg text-xs"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">등록금 격차 투명성 및 입증 책임</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        심리학부 등에서 발생하는 약 100만 원 이상의 등록금 프리미엄(851만 원)은 단순한 실습비 수취를 넘어 명확한 아웃풋(취업률, 연구 성과)으로 정당성을 증명해야 하는 과제를 가집니다.
+                    </p>
+                </div>
+
+                <!-- Action Card 3 -->
+                <div class="bg-slate-800/90 rounded-xl p-5 border border-slate-700/80 space-y-3 relative overflow-hidden group hover:border-emerald-500/50 transition">
+                    <div class="w-1 h-full bg-emerald-500 absolute left-0 top-0"></div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-emerald-400 font-bold uppercase">제언 03</span>
+                        <span class="p-2 bg-slate-700 text-emerald-400 rounded-lg text-xs"><i class="fa-solid fa-trophy"></i></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">전략적 ROI 최고 학과 제시</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        데이터 분석 결과, <strong>경영학과 및 식품자원경제학과</strong>를 포함한 경영경제 계열이 최저 등록금(7,527,750원) 대비 80% 수준 취업률을 기록하여 가성비 측면 최고의 평가를 받았습니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-rm-navy py-12 border-t border-white/10 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-rm-gold flex items-center justify-center text-rm-dark font-black text-sm">
-                    JSW
-                </div>
-                <span class="text-sm font-bold text-white tracking-wider">JSW Portfolio & Data Lab</span>
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 text-xs py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <p class="font-semibold text-slate-300">서울 캠퍼스 교육성과관리위원회 / 기획처 대학정책분석팀</p>
+                <p class="text-slate-500 mt-0.5">2025학년도 학과별 정량 데이터 기반 정밀 종합보고서</p>
             </div>
-
-            <div class="text-center text-xs text-gray-400 font-mono">
-                <p>© 2026 JSW All Rights Reserved. Inspired by Real Madrid C.F. Aesthetics.</p>
-                <p class="text-rm-gold/70 mt-1">대학알리미 & 도로교통공단 공공 빅데이터 활용 보고서</p>
-            </div>
-
-            <div class="flex gap-4 text-gray-400 text-lg">
-                <a href="#" class="hover:text-rm-gold transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="hover:text-rm-gold transition-colors"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#" class="hover:text-rm-gold transition-colors"><i class="fa-solid fa-crown"></i></a>
-            </div>
+            <p class="text-slate-500">Data Source: 2025 서울캠퍼스 대학정보공시 표준분류계열 집계 데이터</p>
         </div>
     </footer>
 
-    <!-- MODAL 1: 대학알리미 진로 보고서 모달 -->
-    <div id="careerModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md overflow-y-auto p-4 sm:p-6 lg:p-8">
-        <div class="modal-box max-w-5xl mx-auto bg-rm-navy border border-rm-gold/40 rounded-2xl shadow-2xl overflow-hidden my-8">
-            
-            <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-rm-dark via-rm-navy to-rm-blue p-6 border-b border-white/10 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-rm-gold text-rm-dark flex items-center justify-center font-bold text-lg">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">대학알리미 데이터 기반 진로 보고서</h3>
-                        <p class="text-xs text-rm-gold">전국 주요 대학 전공별 취업률 & 역량 지표 대시보드</p>
-                    </div>
-                </div>
-                <button onclick="closeCareerModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- Modal Content Body -->
-            <div class="p-6 space-y-8">
-                
-                <!-- Summary KPI Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">공학계열 평균 취업률</span>
-                        <div class="text-2xl font-black text-rm-gold mt-1">74.8%</div>
-                        <span class="text-[10px] text-emerald-400"><i class="fa-solid fa-arrow-up"></i> 전년 대비 +2.3%</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">인문사회계열 평균 취업률</span>
-                        <div class="text-2xl font-black text-sky-400 mt-1">61.5%</div>
-                        <span class="text-[10px] text-gray-400">직무 융합 스킬 보유 시 상향</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">자연과학계열 대학원 진학률</span>
-                        <div class="text-2xl font-black text-purple-400 mt-1">28.4%</div>
-                        <span class="text-[10px] text-purple-300">연구개발 직무 중심</span>
-                    </div>
-                </div>
-
-                <!-- Charts Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Chart 1: Bar Chart -->
-                    <div class="lg:col-span-7 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-bar text-rm-gold"></i> 주요 계열별 취업률 비교 (대학알리미 데이터)
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="careerBarChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Chart 2: Radar Skill Chart -->
-                    <div class="lg:col-span-5 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-bullseye text-rm-gold"></i> 미래 진로 요구 역량 (Competency)
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="careerRadarChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text Insight Summary -->
-                <div class="glass-card p-5 rounded-xl border-l-4 border-rm-gold space-y-2">
-                    <h4 class="text-base font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb text-rm-gold"></i> JSW 분석 핵심 시사점 (Key Findings)
-                    </h4>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        1. <strong>데이터 활용 역량의 유무</strong>가 인문·사회계열 취업률 격차를 최대 18%p 벌어지게 만드는 핵심 요인으로 분석되었습니다.<br>
-                        2. 단순 전공 지식 외에도, <strong>공공데이터 및 빅데이터 도구(Python, SQL) 활용 능력</strong>이 신입 구직자의 가장 경쟁력 있는 차별화 요소로 작용합니다.
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="bg-rm-dark/80 p-4 px-6 border-t border-white/10 flex justify-between items-center">
-                <span class="text-xs text-gray-400 font-mono">Data Source: 교육부 대학알리미 (Academy Info)</span>
-                <button onclick="closeCareerModal()" class="px-5 py-2 rounded-lg bg-rm-gold text-rm-dark font-bold text-xs hover:bg-yellow-400 transition-colors">
-                    닫기
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL 2: 도로교통공단 교통데이터분석 보고서 모달 -->
-    <div id="trafficModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md overflow-y-auto p-4 sm:p-6 lg:p-8">
-        <div class="modal-box max-w-5xl mx-auto bg-rm-navy border border-rm-blue/50 rounded-2xl shadow-2xl overflow-hidden my-8">
-            
-            <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-rm-dark via-rm-navy to-blue-900 p-6 border-b border-white/10 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-rm-blue text-white flex items-center justify-center font-bold text-lg">
-                        <i class="fa-solid fa-car-side"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">도로교통공단 교통 데이터 분석 보고서</h3>
-                        <p class="text-xs text-blue-300">시간대별 사고 발생 건수 및 치사율 위험지수 분석 대시보드</p>
-                    </div>
-                </div>
-                <button onclick="closeTrafficModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- Modal Content Body -->
-            <div class="p-6 space-y-8">
-                
-                <!-- Summary KPI Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">분석 대상 총 사고 건수</span>
-                        <div class="text-2xl font-black text-blue-400 mt-1">184,210 건</div>
-                        <span class="text-[10px] text-gray-400">도로교통공단 연간 데이터</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">야간 시간대 평균 치사율</span>
-                        <div class="text-2xl font-black text-red-400 mt-1">2.41 %</div>
-                        <span class="text-[10px] text-red-300"><i class="fa-solid fa-triangle-exclamation"></i> 주간 대비 1.8배 높음</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">빗길 사고 위험 가중치</span>
-                        <div class="text-2xl font-black text-rm-gold mt-1">+34.5 %</div>
-                        <span class="text-[10px] text-gray-400">제동거리 지수 포함</span>
-                    </div>
-                </div>
-
-                <!-- Charts Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Chart 1: Line Chart -->
-                    <div class="lg:col-span-7 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-line text-blue-400"></i> 시간대별 사고 발생 트렌드 및 위험도
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="trafficLineChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Chart 2: Doughnut Chart -->
-                    <div class="lg:col-span-5 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-pie-chart text-blue-400"></i> 주요 사고 원인 비중
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="trafficPieChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text Insight Summary -->
-                <div class="glass-card p-5 rounded-xl border-l-4 border-rm-blue space-y-2">
-                    <h4 class="text-base font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-rm-blue"></i> 교통안전 개선 정책 제안
-                    </h4>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        1. <strong>심야 시간(22시~04시) 가변형 속도제한 장치</strong> 설치 시 사망사고를 최소 22% 감소시킬 수 있는 시뮬레이션 결과 도출.<br>
-                        2. 빗길 우천 시 사고 다발 구간 12개 지점에 대한 <strong>스마트 발광형 표지판 선제 배치</strong> 권고.
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="bg-rm-dark/80 p-4 px-6 border-t border-white/10 flex justify-between items-center">
-                <span class="text-xs text-gray-400 font-mono">Data Source: 도로교통공단 TASS (Traffic Accident Analysis System)</span>
-                <button onclick="closeTrafficModal()" class="px-5 py-2 rounded-lg bg-rm-blue text-white font-bold text-xs hover:bg-blue-600 transition-colors">
-                    닫기
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Club Crest SVG Definitions
-        function getClubEmblemSVG(theme) {
-            if (theme === 'mcfc') {
-                return `
-                <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="46" fill="#031329" stroke="#6CABDD" stroke-width="4"/>
-                    <circle cx="50" cy="50" r="37" fill="#6CABDD"/>
-                    <circle cx="50" cy="50" r="34" fill="#031329"/>
-                    <!-- Shield -->
-                    <path d="M34 32 H66 V56 C66 66 50 76 50 76 C50 76 34 66 34 56 Z" fill="#6CABDD" stroke="#FFFFFF" stroke-width="1.5"/>
-                    <!-- Ship -->
-                    <path d="M40 43 C43 39 57 39 60 43 L58 48 H42 Z" fill="#FEBE10"/>
-                    <path d="M50 36 V43" stroke="#FEBE10" stroke-width="2"/>
-                    <!-- Red Rose Stripes -->
-                    <path d="M42 56 H58 M44 61 H56 M47 66 H53" stroke="#DA020E" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>`;
-            } else if (theme === 'mufc') {
-                return `
-                <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(239,68,68,0.7)]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 15 H80 L74 78 L50 94 L26 78 Z" fill="#8B0000" stroke="#FFE600" stroke-width="3"/>
-                    <path d="M22 18 H78 V34 H22 Z" fill="#FFE600"/>
-                    <path d="M25 68 H75 L50 88 Z" fill="#FFE600"/>
-                    <rect x="25" y="34" width="50" height="34" fill="#DA020E"/>
-                    <!-- Ship on top -->
-                    <path d="M38 27 C43 23 57 23 62 27 L60 32 H40 Z" fill="#8B0000"/>
-                    <path d="M50 21 V27" stroke="#8B0000" stroke-width="2"/>
-                    <!-- Devil Trident Center -->
-                    <path d="M50 42 L50 62 M43 47 C43 54 57 54 57 47 M43 44 V48 M50 40 V46 M57 44 V48" stroke="#FFE600" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                </svg>`;
+        const rawData = [
+            // 경영경제 계열
+            { category: '경영경제', name: '경영학과', quota: 320.0, competition: 11.1, employment: 81.3, tuition: 7527750, note: '계열 최다 정원 & 최고 취업률 (High ROI)' },
+            { category: '경영경제', name: '경제학과', quota: 128.0, competition: 14.4, employment: 68.5, tuition: 7527750, note: '안정적 표준 경영경제 모델' },
+            { category: '경영경제', name: '식품자원경제학과', quota: 53.0, competition: 15.1, employment: 79.1, tuition: 7527750, note: '고취업률 (79.1%) 교육 가성비 우수' },
+            { category: '경영경제', name: '통계학과', quota: 77.0, competition: 14.8, employment: 70.5, tuition: 7532322, note: '수리 실무 중심 70%대 취업' },
+
+            // 사회과학 계열
+            { category: '사회과학', name: '국제학부', quota: 45.0, competition: 17.9, employment: 63.6, tuition: 7527750, note: '상위권 경쟁률 (17.9:1)' },
+            { category: '사회과학', name: '글로벌한국융합학부', quota: 5.0, competition: 18.4, employment: null, tuition: 7527750, note: '계열 최고 경쟁률 (18.4:1) / 신설·미집계' },
+            { category: '사회과학', name: '미디어학부', quota: 62.0, competition: 15.5, employment: null, tuition: 7683000, note: '등록금 소폭 할증 / 성과 미집계' },
+            { category: '사회과학', name: '보건정책관리학부', quota: 74.0, competition: 15.1, employment: 73.1, tuition: 7527750, note: '사회과학 계열 내 취업 우수 (73.1%)' },
+            { category: '사회과학', name: '사회학과', quota: 74.0, competition: 15.8, employment: 74.6, tuition: 7527750, note: '사회과학 계열 최고 취업률 (74.6%)' },
+            { category: '사회과학', name: '심리학부', quota: 36.0, competition: 16.1, employment: null, tuition: 8511631, note: '최고 등록금 (+13% 프리미엄) / 미집계' },
+            { category: '사회과학', name: '정치외교학과', quota: 74.0, competition: 13.3, employment: 71.4, tuition: 7527750, note: '70%대 안착 전통적 인기도 학과' },
+            { category: '사회과학', name: '행정학과', quota: 73.0, competition: 12.9, employment: 63.5, tuition: 7527750, note: '공공부문 진출 및 고시 준비 연계' }
+        ];
+
+        let currentCategory = 'all';
+        let sortColumn = 'category';
+        let sortAsc = true;
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-blue-600', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+            if(cat === 'all') document.getElementById('btn-cat-all').classList.add('bg-white', 'text-blue-600', 'shadow-sm');
+            if(cat === '경영경제') document.getElementById('btn-cat-biz').classList.add('bg-white', 'text-blue-600', 'shadow-sm');
+            if(cat === '사회과학') document.getElementById('btn-cat-social').classList.add('bg-white', 'text-blue-600', 'shadow-sm');
+
+            renderTable();
+        }
+
+        function sortTable(col) {
+            if(sortColumn === col) {
+                sortAsc = !sortAsc;
             } else {
-                // Real Madrid Default (Dark / Light)
-                return `
-                <svg viewBox="0 0 100 120" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(254,190,16,0.7)]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Crown -->
-                    <path d="M32 28 L38 18 L50 25 L62 18 L68 28 Z" fill="#FEBE10" stroke="#D49B00" stroke-width="1.5"/>
-                    <circle cx="50" cy="14" r="3" fill="#FEBE10"/>
-                    <circle cx="34" cy="18" r="2" fill="#38BDF8"/>
-                    <circle cx="66" cy="18" r="2" fill="#38BDF8"/>
-                    <rect x="30" y="28" width="40" height="6" rx="2" fill="#EE2524"/>
-                    <!-- Circular Crest -->
-                    <circle cx="50" cy="72" r="32" fill="#0B1E36" stroke="#FEBE10" stroke-width="4"/>
-                    <circle cx="50" cy="72" r="26" fill="#FFFFFF" stroke="#FEBE10" stroke-width="1.5"/>
-                    <!-- Blue Sash -->
-                    <path d="M28 52 L68 92 L74 84 L34 44 Z" fill="#00529F"/>
-                    <!-- Monogram Letters -->
-                    <text x="50" y="80" font-family="'Outfit', sans-serif" font-weight="900" font-size="24" fill="#FEBE10" text-anchor="middle">M</text>
-                    <text x="50" y="78" font-family="'Outfit', sans-serif" font-weight="800" font-size="15" fill="#00529F" text-anchor="middle">CF</text>
-                </svg>`;
+                sortColumn = col;
+                sortAsc = true;
             }
+            renderTable();
         }
 
-        // Mini button icon SVGs
-        function initMiniCrests() {
-            const rmEl = document.getElementById('miniCrestRM');
-            const mcfcEl = document.getElementById('miniCrestMCFC');
-            const mufcEl = document.getElementById('miniCrestMUFC');
-            if (rmEl) rmEl.innerHTML = getClubEmblemSVG('rm-dark');
-            if (mcfcEl) mcfcEl.innerHTML = getClubEmblemSVG('mcfc');
-            if (mufcEl) mufcEl.innerHTML = getClubEmblemSVG('mufc');
-        }
+        function renderTable() {
+            const tbody = document.getElementById('departmentTableBody');
+            const search = document.getElementById('searchInput').value.toLowerCase();
 
-        // Multi-Theme Controller Logic
-        let currentTheme = 'rm-dark';
+            let filtered = rawData.filter(d => {
+                const matchCat = currentCategory === 'all' || d.category === currentCategory;
+                const matchSearch = d.name.toLowerCase().includes(search);
+                return matchCat && matchSearch;
+            });
 
-        function setTheme(theme) {
-            currentTheme = theme;
-            document.body.className = "antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark";
-            
-            if (theme === 'rm-light') {
-                document.body.classList.add('theme-rm-light');
-            } else if (theme === 'mcfc') {
-                document.body.classList.add('theme-mcfc');
-            } else if (theme === 'mufc') {
-                document.body.classList.add('theme-mufc');
-            }
+            filtered.sort((a, b) => {
+                let valA = a[sortColumn];
+                let valB = b[sortColumn];
 
-            localStorage.setItem('jsw_club_theme', theme);
-            updateThemeUIControls(theme);
-            updateClubElements(theme);
+                if(valA === null) valA = -1;
+                if(valB === null) valB = -1;
 
-            // Re-render open modal charts if visible
-            if (!document.getElementById('careerModal').classList.contains('hidden')) {
-                renderCareerCharts();
-            }
-            if (!document.getElementById('trafficModal').classList.contains('hidden')) {
-                renderTrafficCharts();
-            }
-        }
-
-        function updateThemeUIControls(theme) {
-            const btns = ['rm-dark', 'rm-light', 'mcfc', 'mufc'];
-            btns.forEach(b => {
-                const btnEl = document.getElementById('btn-' + b);
-                if (!btnEl) return;
-                if (b === theme) {
-                    btnEl.className = "px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-white bg-white/20 border border-white/40 shadow-sm";
+                if (typeof valA === 'string') {
+                    return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
                 } else {
-                    btnEl.className = "px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-400 hover:text-white";
+                    return sortAsc ? valA - valB : valB - valA;
                 }
             });
 
-            const mobileSelect = document.getElementById('mobileThemeSelect');
-            if (mobileSelect) mobileSelect.value = theme;
-        }
+            tbody.innerHTML = '';
 
-        function updateClubElements(theme) {
-            const brandEmblemContainer = document.getElementById('brandEmblemContainer');
-            const cardCrestContainer = document.getElementById('cardCrestContainer');
-            const clubBadgeTag = document.getElementById('clubBadgeTag');
-            const clubSlogan = document.getElementById('clubSlogan');
-            const heroBadgeIcon = document.getElementById('heroBadgeIcon');
-            const heroBadgeText = document.getElementById('heroBadgeText');
-            const cardRoleText = document.getElementById('cardRoleText');
-            const cardQuoteText = document.getElementById('cardQuoteText');
-            const heroCtaPrimary = document.getElementById('heroCtaPrimary');
+            filtered.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50/80 transition border-b border-slate-100';
 
-            // Inject SVG emblems
-            const emblemSvg = getClubEmblemSVG(theme);
-            if (brandEmblemContainer) brandEmblemContainer.innerHTML = emblemSvg;
-            if (cardCrestContainer) cardCrestContainer.innerHTML = emblemSvg;
+                const catBadge = item.category === '경영경제' 
+                    ? `<span class="bg-sky-100 text-sky-800 text-[10px] font-bold px-2 py-0.5 rounded-full">경영경제</span>`
+                    : `<span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-full">사회과학</span>`;
 
-            if (theme === 'mcfc') {
-                if (clubBadgeTag) {
-                    clubBadgeTag.innerText = "MCFC Analytics";
-                    clubBadgeTag.className = "text-xs px-2 py-0.5 rounded bg-sky-500/30 text-sky-200 font-mono uppercase tracking-widest border border-sky-400/40";
-                }
-                if (clubSlogan) clubSlogan.innerText = "Superbia in Proelio (Pride in Battle)";
-                if (heroBadgeIcon) heroBadgeIcon.className = "fa-solid fa-cloud-bolt text-sky-300";
-                if (heroBadgeText) heroBadgeText.innerText = "Manchester City Tactical Analyst";
-                if (cardRoleText) cardRoleText.innerText = "ROLE: MCFC ANALYST";
-                if (cardQuoteText) cardQuoteText.innerText = '"Cityzens! 완벽한 패스 워크처럼 정교한 빅데이터를 설계합니다."';
-                if (heroCtaPrimary) heroCtaPrimary.className = "px-8 py-4 rounded-xl bg-gradient-to-r from-sky-400 to-blue-600 text-white font-extrabold text-base shadow-[0_0_25px_rgba(56,189,248,0.5)] hover:shadow-[0_0_35px_rgba(56,189,248,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2";
-            } else if (theme === 'mufc') {
-                if (clubBadgeTag) {
-                    clubBadgeTag.innerText = "MUFC Analytics";
-                    clubBadgeTag.className = "text-xs px-2 py-0.5 rounded bg-red-600/30 text-red-300 font-mono uppercase tracking-widest border border-red-500/40";
-                }
-                if (clubSlogan) clubSlogan.innerText = "Glory Glory Man United";
-                if (heroBadgeIcon) heroBadgeIcon.className = "fa-solid fa-wand-magic-sparkles text-red-400";
-                if (heroBadgeText) heroBadgeText.innerText = "Manchester United Red Devil Analyst";
-                if (cardRoleText) cardRoleText.innerText = "ROLE: MUFC ANALYST";
-                if (cardQuoteText) cardQuoteText.innerText = '"Glory Glory! 극적인 버기 타임처럼 역전의 인사이트를 창출합니다."';
-                if (heroCtaPrimary) heroCtaPrimary.className = "px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-extrabold text-base shadow-[0_0_25px_rgba(220,38,38,0.5)] hover:shadow-[0_0_35px_rgba(220,38,38,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2";
-            } else {
-                // Real Madrid Default / Light
-                if (clubBadgeTag) {
-                    clubBadgeTag.innerText = "RM Analytics";
-                    clubBadgeTag.className = "text-xs px-2 py-0.5 rounded bg-rm-blue/60 text-rm-gold font-mono uppercase tracking-widest border border-rm-gold/30";
-                }
-                if (clubSlogan) clubSlogan.innerText = "Hala Madrid y nada más";
-                if (heroBadgeIcon) heroBadgeIcon.className = "fa-solid fa-shield-halved text-rm-gold";
-                if (heroBadgeText) heroBadgeText.innerText = "Real Madrid Spirit Data Analyst";
-                if (cardRoleText) cardRoleText.innerText = "ROLE: RM ANALYST";
-                if (cardQuoteText) cardQuoteText.innerText = '"¡Hala Madrid! 경기의 흐름을 바꾸듯, 데이터로 인사이트를 지배합니다."';
-                if (heroCtaPrimary) heroCtaPrimary.className = "px-8 py-4 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-extrabold text-base shadow-[0_0_25px_rgba(254,190,16,0.5)] hover:shadow-[0_0_35px_rgba(254,190,16,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2";
-            }
-        }
+                const empDisplay = item.employment !== null 
+                    ? `<span class="font-semibold text-slate-800">${item.employment.toFixed(1)}%</span>`
+                    : `<span class="text-amber-600 bg-amber-50 px-2 py-0.5 rounded font-medium text-[11px]"><i class="fa-solid fa-clock-rotate-left mr-1"></i>데이터 미집계</span>`;
 
-        // Saved Theme Load & Mini Crest Initialization
-        window.addEventListener('DOMContentLoaded', () => {
-            initMiniCrests();
-            const savedTheme = localStorage.getItem('jsw_club_theme') || 'rm-dark';
-            setTheme(savedTheme);
-        });
+                const formattedTuition = item.tuition.toLocaleString() + '원';
+                const isHighTuition = item.tuition > 7600000;
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                tr.innerHTML = `
+                    <td class="py-3 px-4">${catBadge}</td>
+                    <td class="py-3 px-4 font-bold text-slate-900">${item.name}</td>
+                    <td class="py-3 px-4 text-right font-medium">${item.quota.toFixed(1)}</td>
+                    <td class="py-3 px-4 text-right font-semibold text-amber-700">${item.competition.toFixed(1)} : 1</td>
+                    <td class="py-3 px-4 text-right">${empDisplay}</td>
+                    <td class="py-3 px-4 text-right ${isHighTuition ? 'text-rose-600 font-bold' : ''}">${formattedTuition}</td>
+                    <td class="py-3 px-4 text-slate-500 text-center text-[11px]">${item.note}</td>
+                `;
+                tbody.appendChild(tr);
             });
         }
 
-        // Global Chart Instances
-        let careerBarInstance = null;
-        let careerRadarInstance = null;
-        let trafficLineInstance = null;
-        let trafficPieInstance = null;
+        function initCharts() {
+            // Chart 1: Competition vs Employment Bar/Line
+            const ctx1 = document.getElementById('compVsEmpChart').getContext('2d');
+            
+            const labels = rawData.map(d => d.name);
+            const compData = rawData.map(d => d.competition);
+            const empData = rawData.map(d => d.employment);
 
-        // Dynamic Chart Color Palette based on current active club theme
-        function getChartColors() {
-            if (currentTheme === 'rm-light') {
-                return {
-                    grid: 'rgba(0, 0, 0, 0.1)',
-                    text: '#334155',
-                    radarGrid: 'rgba(0, 0, 0, 0.15)',
-                    radarText: '#0F172A',
-                    primary: '#FEBE10',
-                    secondary: '#00529F'
-                };
-            } else if (currentTheme === 'mcfc') {
-                return {
-                    grid: 'rgba(108, 171, 221, 0.15)',
-                    text: '#98C5E9',
-                    radarGrid: 'rgba(108, 171, 221, 0.25)',
-                    radarText: '#E0F2FE',
-                    primary: '#38BDF8',
-                    secondary: '#0284C7'
-                };
-            } else if (currentTheme === 'mufc') {
-                return {
-                    grid: 'rgba(239, 68, 68, 0.15)',
-                    text: '#FCA5A5',
-                    radarGrid: 'rgba(239, 68, 68, 0.25)',
-                    radarText: '#FEE2E2',
-                    primary: '#EF4444',
-                    secondary: '#DC2626'
-                };
-            } else {
-                // Real Madrid Dark
-                return {
-                    grid: 'rgba(255, 255, 255, 0.1)',
-                    text: '#9CA3AF',
-                    radarGrid: 'rgba(255, 255, 255, 0.15)',
-                    radarText: '#E5E7EB',
-                    primary: '#FEBE10',
-                    secondary: '#00529F'
-                };
-            }
-        }
-
-        // Modal Controls for Career Report
-        function openCareerModal() {
-            document.getElementById('careerModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            setTimeout(renderCareerCharts, 100);
-        }
-
-        function closeCareerModal() {
-            document.getElementById('careerModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Modal Controls for Traffic Report
-        function openTrafficModal() {
-            document.getElementById('trafficModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            setTimeout(renderTrafficCharts, 100);
-        }
-
-        function closeTrafficModal() {
-            document.getElementById('trafficModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Render Career Charts (University Academy Info Data)
-        function renderCareerCharts() {
-            if (careerBarInstance) careerBarInstance.destroy();
-            if (careerRadarInstance) careerRadarInstance.destroy();
-
-            const palette = getChartColors();
-
-            const ctxBar = document.getElementById('careerBarChart').getContext('2d');
-            careerBarInstance = new Chart(ctxBar, {
+            new Chart(ctx1, {
                 type: 'bar',
                 data: {
-                    labels: ['공학계열', '자연과학', '인문사회', '예체능', '의약계열'],
-                    datasets: [{
-                        label: '취업률 (%)',
-                        data: [74.8, 63.2, 61.5, 58.9, 82.1],
-                        backgroundColor: [
-                            palette.primary,
-                            palette.secondary,
-                            'rgba(147, 51, 234, 0.85)',
-                            'rgba(236, 72, 153, 0.85)',
-                            'rgba(16, 185, 129, 0.85)'
-                        ],
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            grid: { color: palette.grid },
-                            ticks: { color: palette.text }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: palette.text }
-                        }
-                    }
-                }
-            });
-
-            const ctxRadar = document.getElementById('careerRadarChart').getContext('2d');
-            careerRadarInstance = new Chart(ctxRadar, {
-                type: 'radar',
-                data: {
-                    labels: ['데이터분석', '문제해결력', '전공지식', '커뮤니케이션', '도구활용(SQL/Py)', '글로벌역량'],
-                    datasets: [{
-                        label: '신입 채용 중요도 지수',
-                        data: [92, 88, 75, 80, 90, 65],
-                        backgroundColor: palette.primary + '33',
-                        borderColor: palette.primary,
-                        pointBackgroundColor: palette.primary
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        r: {
-                            grid: { color: palette.radarGrid },
-                            angleLines: { color: palette.radarGrid },
-                            pointLabels: { color: palette.radarText, font: { size: 10 } },
-                            ticks: { display: false, backdropColor: 'transparent' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Render Traffic Charts (KoRoad Traffic Data)
-        function renderTrafficCharts() {
-            if (trafficLineInstance) trafficLineInstance.destroy();
-            if (trafficPieInstance) trafficPieInstance.destroy();
-
-            const palette = getChartColors();
-
-            const ctxLine = document.getElementById('trafficLineChart').getContext('2d');
-            trafficLineInstance = new Chart(ctxLine, {
-                type: 'line',
-                data: {
-                    labels: ['02시', '06시', '10시', '14시', '18시', '22시'],
+                    labels: labels,
                     datasets: [
                         {
-                            label: '사고 건수 지수',
-                            data: [35, 42, 88, 95, 110, 78],
-                            borderColor: palette.secondary,
-                            backgroundColor: palette.secondary + '22',
-                            fill: true,
-                            tension: 0.4
+                            label: '신입생 경쟁률 (n:1)',
+                            data: compData,
+                            backgroundColor: 'rgba(245, 158, 11, 0.7)',
+                            borderColor: 'rgba(245, 158, 11, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y1',
+                            borderRadius: 4
                         },
                         {
-                            label: '치사율 위험도 Index',
-                            data: [85, 40, 25, 30, 45, 92],
-                            borderColor: '#EF4444',
-                            borderDash: [5, 5],
-                            backgroundColor: 'transparent',
-                            tension: 0.4
+                            label: '취업률 (%)',
+                            data: empData,
+                            type: 'line',
+                            borderColor: '#2563eb',
+                            backgroundColor: '#2563eb',
+                            borderWidth: 2.5,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            yAxisID: 'y2',
+                            spanGaps: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if(context.dataset.yAxisID === 'y2' && context.raw === null) {
+                                        return '취업률: 데이터 미집계';
+                                    }
+                                    return context.dataset.label + ': ' + context.raw;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { font: { size: 10 }, rotation: 45 } },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: '경쟁률 (n:1)', font: { size: 10 } },
+                            min: 0,
+                            max: 22
+                        },
+                        y2: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: '취업률 (%)', font: { size: 10 } },
+                            min: 50,
+                            max: 90,
+                            grid: { drawOnChartArea: false }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: ROI Scatter Matrix (Tuition vs Employment vs Quota)
+            const ctx2 = document.getElementById('roiMatrixChart').getContext('2d');
+
+            const scatterDataBiz = rawData
+                .filter(d => d.category === '경영경제' && d.employment !== null)
+                .map(d => ({ x: d.tuition, y: d.employment, r: Math.sqrt(d.quota) * 1.8, name: d.name }));
+
+            const scatterDataSocial = rawData
+                .filter(d => d.category === '사회과학' && d.employment !== null)
+                .map(d => ({ x: d.tuition, y: d.employment, r: Math.sqrt(d.quota) * 1.8, name: d.name }));
+
+            new Chart(ctx2, {
+                type: 'bubble',
+                data: {
+                    datasets: [
+                        {
+                            label: '경영경제 계열',
+                            data: scatterDataBiz,
+                            backgroundColor: 'rgba(2, 132, 199, 0.6)',
+                            borderColor: 'rgba(2, 132, 199, 1)',
+                            borderWidth: 1.5
+                        },
+                        {
+                            label: '사회과학 계열',
+                            data: scatterDataSocial,
+                            backgroundColor: 'rgba(124, 58, 237, 0.6)',
+                            borderColor: 'rgba(124, 58, 237, 1)',
+                            borderWidth: 1.5
                         }
                     ]
                 },
@@ -1188,51 +690,40 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { labels: { color: palette.text, font: { size: 11 } } }
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const raw = context.raw;
+                                    return `${raw.name}: 등록금 ${raw.x.toLocaleString()}원 | 취업률 ${raw.y}%`;
+                                }
+                            }
+                        }
                     },
                     scales: {
-                        y: {
-                            grid: { color: palette.grid },
-                            ticks: { color: palette.text }
-                        },
                         x: {
-                            grid: { display: false },
-                            ticks: { color: palette.text }
-                        }
-                    }
-                }
-            });
-
-            const ctxPie = document.getElementById('trafficPieChart').getContext('2d');
-            trafficPieInstance = new Chart(ctxPie, {
-                type: 'doughnut',
-                data: {
-                    labels: ['안전운전 불이행', '신호위반', '안전거리 미확보', '보행자 보호위반', '기타'],
-                    datasets: [{
-                        data: [55.4, 14.2, 12.8, 9.6, 8.0],
-                        backgroundColor: [
-                            palette.secondary,
-                            palette.primary,
-                            '#10B981',
-                            '#F59E0B',
-                            '#6B7280'
-                        ],
-                        borderWidth: 2,
-                        borderColor: currentTheme === 'rm-light' ? '#FFFFFF' : '#0B1E36'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: palette.text, font: { size: 10 } }
+                            title: { display: true, text: '연간 평균 등록금 (원)', font: { size: 10 } },
+                            min: 7400000,
+                            max: 8700000,
+                            ticks: {
+                                callback: function(value) { return (value/10000).toLocaleString() + '만'; }
+                            }
+                        },
+                        y: {
+                            title: { display: true, text: '취업률 (%)', font: { size: 10 } },
+                            min: 55,
+                            max: 85
                         }
                     }
                 }
             });
         }
+
+        // On Page Load Initialization
+        window.onload = function() {
+            renderTable();
+            initCharts();
+        };
     </script>
 </body>
 </html>
