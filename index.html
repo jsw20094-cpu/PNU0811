@@ -3,15 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSW | Data Analytics &amp; Research Portfolio</title>
+    <title>JSW | Data Analytics & Research Portfolio</title>
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./나_files/saved_resource"></script>
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./나_files/all.min.css">
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./나_files/chart.js.다운로드"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="./나_files/css2" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -46,65 +46,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(7, 14, 27, 0.6) 0%, rgba(7, 14, 27, 0.95) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(0, 82, 159, 0.4) 0%, rgba(7, 14, 27, 1) 75%),
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            transition: background 0.4s ease;
-        }
-
-        /* 1. Real Madrid Light Theme */
-        body.theme-rm-light {
-            background-color: #F8FAFC;
-            color: #0F172A;
-        }
-        body.theme-rm-light .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(248, 250, 252, 0.82) 0%, rgba(248, 250, 252, 0.98) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(0, 82, 159, 0.18) 0%, rgba(248, 250, 252, 1) 75%),
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        /* 2. Manchester City Theme */
-        body.theme-mcfc {
-            background-color: #031329;
-            color: #E0F2FE;
-        }
-        body.theme-mcfc .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(3, 19, 41, 0.65) 0%, rgba(3, 19, 41, 0.98) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(108, 171, 221, 0.45) 0%, rgba(3, 19, 41, 1) 75%),
-                        url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        body.theme-mcfc .glass-card {
-            background: rgba(8, 30, 58, 0.75);
-            border-color: rgba(108, 171, 221, 0.25);
-        }
-
-        /* Shared Light Mode overrides */
-        body.theme-rm-light .gold-gradient-text {
-            background: linear-gradient(135deg, #0B1E36 0%, #D49B00 60%, #00529F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body.theme-rm-light .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(11, 30, 54, 0.12);
-            box-shadow: 0 10px 25px -5px rgba(0, 82, 159, 0.08);
-        }
-        body.theme-rm-light .text-white { color: #0F172A !important; }
-        body.theme-rm-light .text-gray-300,
-        body.theme-rm-light .text-gray-400 { color: #475569 !important; }
-        body.theme-rm-light .bg-rm-dark,
-        body.theme-rm-light .bg-rm-navy { background-color: #FFFFFF !important; }
-
         .glass-card {
             background: rgba(15, 30, 54, 0.65);
             backdrop-filter: blur(16px);
@@ -121,30 +62,14 @@
             box-shadow: 0 0 30px rgba(254, 190, 16, 0.4);
             border-color: rgba(254, 190, 16, 0.8);
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #070E1B;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #00529F;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FEBE10;
-        }
     </style>
 </head>
-<body class="antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark theme-rm-light">
+<body class="antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark">
 
     <!-- Navigation Header -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Brand Logo / Emblem -->
                 <a href="#" class="flex items-center gap-3 group">
                     <div id="brandEmblemContainer" class="w-11 h-11 flex-shrink-0 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_10px_rgba(254,190,16,0.3)]">
                         <svg viewBox="0 0 100 120" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(254,190,16,0.7)]" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +93,6 @@
                     </div>
                 </a>
 
-                <!-- Desktop Nav Links -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="#about" class="text-sm font-medium hover:text-rm-gold transition-colors">소개 (About)</a>
                     <a href="#reports" class="text-sm font-medium hover:text-rm-gold transition-colors flex items-center gap-1.5">
@@ -177,33 +101,12 @@
                     <a href="#timeline" class="text-sm font-medium hover:text-rm-gold transition-colors">활동 내역</a>
                     <a href="#skills" class="text-sm font-medium hover:text-rm-gold transition-colors">기술 스택</a>
                 </div>
-
-                <!-- Theme Switcher Controls -->
-                <div class="hidden md:flex items-center gap-3">
-                    <span class="text-[11px] font-mono text-gray-400 font-bold hidden xl:inline"><i class="fa-solid fa-futbol mr-1"></i>CLUB THEME:</span>
-                    <div class="flex items-center bg-black/40 p-1 rounded-xl border border-white/10 gap-1 text-xs font-mono font-bold">
-                        <button onclick="setTheme('rm-dark')" id="btn-rm-dark" title="Real Madrid Dark" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-400 hover:text-white">
-                            <span class="w-4 h-4 inline-block align-middle">⚪</span>
-                            <span class="hidden sm:inline">RM</span>
-                        </button>
-                        <button onclick="setTheme('rm-light')" id="btn-rm-light" title="Real Madrid Light" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-white bg-white/20 border border-white/40 shadow-sm">
-                            <span>⚪</span>
-                            <span class="hidden sm:inline">Light</span>
-                        </button>
-                        <button onclick="setTheme('mcfc')" id="btn-mcfc" title="Manchester City Mode" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-400 hover:text-white">
-                            <span>🔵</span>
-                            <span class="hidden sm:inline">MCFC</span>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content Area / Reports Section -->
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Reports Section -->
         <section id="reports" class="space-y-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <span class="text-xs font-mono uppercase tracking-widest text-rm-gold bg-rm-gold/10 px-3 py-1 rounded-full border border-rm-gold/30">Analytics Portfolio</span>
@@ -229,14 +132,14 @@
                         <p class="text-sm text-gray-300 mb-6 leading-relaxed">
                             전국 주요 대학의 취업률, 유지취업률, 전공계열별 진로 현황 데이터를 다각도로 분석하여 수도권-비수도권 간 불균형 및 주요 영향 요인을 다룬 보고서입니다.
                         </p>
-                        <!-- Visual Area Sample -->
                         <div class="w-full h-40 bg-rm-navy/60 rounded-xl border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative">
                             <i class="fa-solid fa-chart-column text-4xl text-rm-gold/70"></i>
                         </div>
                     </div>
                     <div class="pt-4 border-t border-white/10 flex items-center justify-between">
                         <span class="text-xs text-gray-400 font-mono">Python / Pandas / Seaborn</span>
-                        <a href="#" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
+                        <!-- 변경된 경로: ./data1/index.html -->
+                        <a href="./data1/index.html" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
                             자세히 보기 <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -257,20 +160,20 @@
                         <p class="text-sm text-gray-300 mb-6 leading-relaxed">
                             도로교통공단 사고 빅데이터를 수집하여 시간대별, 기상 조건별, 도로 형태별 발생 빈도 및 치사율 상관관계를 지리정보(GIS) 분석과 함께 수록하였습니다.
                         </p>
-                        <!-- Visual Area Sample -->
                         <div class="w-full h-40 bg-rm-navy/60 rounded-xl border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative">
                             <i class="fa-solid fa-map-location-dot text-4xl text-sky-400/70"></i>
                         </div>
                     </div>
                     <div class="pt-4 border-t border-white/10 flex items-center justify-between">
                         <span class="text-xs text-gray-400 font-mono">Folium / GeoPandas / Matplotlib</span>
-                        <a href="#" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
+                        <!-- 변경된 경로: ./data2/index.html -->
+                        <a href="./data2/index.html" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
                             자세히 보기 <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Card 3 (NEW): 법규위반 항목별 교통사고 분석 -->
+                <!-- Card 3: 법규위반 항목별 교통사고 분석 -->
                 <div class="glass-card rounded-2xl p-6 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
@@ -285,14 +188,14 @@
                         <p class="text-sm text-gray-300 mb-6 leading-relaxed">
                             신호위반, 중앙선 침범, 안전운전 의무 불이행 등 세부 법규위반 유형별 사고 치사율과 발생 건수를 계량화하여 고위험 위반 유형 집중 관리 방안을 제안합니다.
                         </p>
-                        <!-- Visual Area Sample -->
                         <div class="w-full h-40 bg-rm-navy/60 rounded-xl border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative">
                             <i class="fa-solid fa-chart-pie text-4xl text-red-400/70"></i>
                         </div>
                     </div>
                     <div class="pt-4 border-t border-white/10 flex items-center justify-between">
                         <span class="text-xs text-gray-400 font-mono">Python / Scikit-Learn / Plotly</span>
-                        <a href="#" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
+                        <!-- 변경된 경로: ./data3/index.html -->
+                        <a href="./data3/index.html" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
                             자세히 보기 <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -300,18 +203,6 @@
 
             </div>
         </section>
-
     </main>
-
-    <script>
-        function setTheme(theme) {
-            document.body.className = "antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark";
-            if (theme === 'rm-light') {
-                document.body.classList.add('theme-rm-light');
-            } else if (theme === 'mcfc') {
-                document.body.classList.add('theme-mcfc');
-            }
-        }
-    </script>
 </body>
 </html>
