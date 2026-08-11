@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSW | Data Analytics & Research Portfolio</title>
+    <title>JSW | Data Analytics &amp; Research Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -11,7 +11,7 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -46,7 +46,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Hero Backgrounds per Theme */
         .rm-hero-bg {
             background: linear-gradient(180deg, rgba(7, 14, 27, 0.6) 0%, rgba(7, 14, 27, 0.95) 100%),
                         radial-gradient(circle at 50% 20%, rgba(0, 82, 159, 0.4) 0%, rgba(7, 14, 27, 1) 75%),
@@ -71,7 +70,7 @@
             background-attachment: fixed;
         }
 
-        /* 2. Manchester City Theme (Sky Blue / Navy / Ice White) */
+        /* 2. Manchester City Theme */
         body.theme-mcfc {
             background-color: #031329;
             color: #E0F2FE;
@@ -87,50 +86,6 @@
         body.theme-mcfc .glass-card {
             background: rgba(8, 30, 58, 0.75);
             border-color: rgba(108, 171, 221, 0.25);
-        }
-        body.theme-mcfc .gold-gradient-text {
-            background: linear-gradient(135deg, #FFFFFF 0%, #6CABDD 50%, #38BDF8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body.theme-mcfc .gold-border-glow {
-            box-shadow: 0 0 20px rgba(108, 171, 221, 0.2);
-            border: 1px solid rgba(108, 171, 221, 0.4);
-        }
-        body.theme-mcfc .gold-border-glow:hover {
-            box-shadow: 0 0 30px rgba(108, 171, 221, 0.5);
-            border-color: rgba(56, 189, 248, 0.8);
-        }
-
-        /* 3. Manchester United Theme (Red Devils Crimson / Black / Warm Gold) */
-        body.theme-mufc {
-            background-color: #0D0203;
-            color: #FEE2E2;
-        }
-        body.theme-mufc .rm-hero-bg {
-            background: linear-gradient(180deg, rgba(13, 2, 3, 0.68) 0%, rgba(13, 2, 3, 0.98) 100%),
-                        radial-gradient(circle at 50% 20%, rgba(218, 2, 14, 0.4) 0%, rgba(13, 2, 3, 1) 75%),
-                        url('https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        body.theme-mufc .glass-card {
-            background: rgba(31, 7, 10, 0.75);
-            border-color: rgba(218, 2, 14, 0.3);
-        }
-        body.theme-mufc .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF 0%, #FF2A3B 50%, #FFE600 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        body.theme-mufc .gold-border-glow {
-            box-shadow: 0 0 20px rgba(218, 2, 14, 0.25);
-            border: 1px solid rgba(218, 2, 14, 0.4);
-        }
-        body.theme-mufc .gold-border-glow:hover {
-            box-shadow: 0 0 30px rgba(218, 2, 14, 0.6);
-            border-color: rgba(255, 42, 59, 0.8);
         }
 
         /* Shared Light Mode overrides */
@@ -183,7 +138,7 @@
         }
     </style>
 </head>
-<body class="antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark">
+<body class="antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark theme-rm-light">
 
     <!-- Navigation Header -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10 transition-all duration-300">
@@ -191,9 +146,19 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Brand Logo / Emblem -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <!-- Dynamic Club Emblem Container -->
                     <div id="brandEmblemContainer" class="w-11 h-11 flex-shrink-0 transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_10px_rgba(254,190,16,0.3)]">
-                        <!-- Injected via JS -->
+                        <svg viewBox="0 0 100 120" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(254,190,16,0.7)]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 28 L38 18 L50 25 L62 18 L68 28 Z" fill="#FEBE10" stroke="#D49B00" stroke-width="1.5"></path>
+                            <circle cx="50" cy="14" r="3" fill="#FEBE10"></circle>
+                            <circle cx="34" cy="18" r="2" fill="#38BDF8"></circle>
+                            <circle cx="66" cy="18" r="2" fill="#38BDF8"></circle>
+                            <rect x="30" y="28" width="40" height="6" rx="2" fill="#EE2524"></rect>
+                            <circle cx="50" cy="72" r="32" fill="#0B1E36" stroke="#FEBE10" stroke-width="4"></circle>
+                            <circle cx="50" cy="72" r="26" fill="#FFFFFF" stroke="#FEBE10" stroke-width="1.5"></circle>
+                            <path d="M28 52 L68 92 L74 84 L34 44 Z" fill="#00529F"></path>
+                            <text x="50" y="80" font-family="'Outfit', sans-serif" font-weight="900" font-size="24" fill="#FEBE10" text-anchor="middle">M</text>
+                            <text x="50" y="78" font-family="'Outfit', sans-serif" font-weight="800" font-size="15" fill="#00529F" text-anchor="middle">CF</text>
+                        </svg>
                     </div>
                     <div class="flex flex-col">
                         <span class="font-outfit font-extrabold text-xl tracking-wider text-white flex items-center gap-2">
@@ -217,1009 +182,135 @@
                 <div class="hidden md:flex items-center gap-3">
                     <span class="text-[11px] font-mono text-gray-400 font-bold hidden xl:inline"><i class="fa-solid fa-futbol mr-1"></i>CLUB THEME:</span>
                     <div class="flex items-center bg-black/40 p-1 rounded-xl border border-white/10 gap-1 text-xs font-mono font-bold">
-                        <button onclick="setTheme('rm-dark')" id="btn-rm-dark" title="Real Madrid Dark" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-rm-gold bg-rm-blue/40 border border-rm-gold/40">
-                            <span class="w-4 h-4 inline-block align-middle" id="miniCrestRM"></span>
+                        <button onclick="setTheme('rm-dark')" id="btn-rm-dark" title="Real Madrid Dark" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-400 hover:text-white">
+                            <span class="w-4 h-4 inline-block align-middle">⚪</span>
                             <span class="hidden sm:inline">RM</span>
                         </button>
-                        <button onclick="setTheme('rm-light')" id="btn-rm-light" title="Real Madrid Light" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-300 hover:text-white">
+                        <button onclick="setTheme('rm-light')" id="btn-rm-light" title="Real Madrid Light" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-white bg-white/20 border border-white/40 shadow-sm">
                             <span>⚪</span>
                             <span class="hidden sm:inline">Light</span>
                         </button>
-                        <button onclick="setTheme('mcfc')" id="btn-mcfc" title="Manchester City Mode" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-300 hover:text-sky-300">
-                            <span class="w-4 h-4 inline-block align-middle" id="miniCrestMCFC"></span>
+                        <button onclick="setTheme('mcfc')" id="btn-mcfc" title="Manchester City Mode" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-400 hover:text-white">
+                            <span>🔵</span>
                             <span class="hidden sm:inline">MCFC</span>
                         </button>
-                        <button onclick="setTheme('mufc')" id="btn-mufc" title="Manchester United Mode" class="px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-300 hover:text-red-400">
-                            <span class="w-4 h-4 inline-block align-middle" id="miniCrestMUFC"></span>
-                            <span class="hidden sm:inline">MUFC</span>
-                        </button>
                     </div>
-
-                    <a href="#reports" id="navCtaBtn" class="px-4 py-2 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-bold text-xs hover:shadow-[0_0_15px_rgba(254,190,16,0.6)] transition-all">
-                        <i class="fa-solid fa-file-invoice mr-1"></i> 보고서 열람
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button & Mobile Theme Selector -->
-                <div class="md:hidden flex items-center gap-2">
-                    <select onchange="setTheme(this.value)" id="mobileThemeSelect" class="bg-rm-navy text-xs text-rm-gold border border-rm-gold/40 rounded-lg px-2 py-1 font-mono font-bold">
-                        <option value="rm-dark">👑 RM Dark</option>
-                        <option value="rm-light">⚪ RM Light</option>
-                        <option value="mcfc">🩵 맨시티</option>
-                        <option value="mufc">🔴 맨유</option>
-                    </select>
-                    <button id="mobileMenuBtn" class="text-gray-300 hover:text-white p-2">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
                 </div>
             </div>
-        </div>
-
-        <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden bg-rm-navy/95 backdrop-blur-xl border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
-            <a href="#about" class="block py-2 text-base font-medium text-gray-200 hover:text-rm-gold">소개 (About)</a>
-            <a href="#reports" class="block py-2 text-base font-medium text-rm-gold">주요 분석 보고서</a>
-            <a href="#timeline" class="block py-2 text-base font-medium text-gray-200 hover:text-rm-gold">활동 내역</a>
-            <a href="#skills" class="block py-2 text-base font-medium text-gray-200 hover:text-rm-gold">기술 스택</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="rm-hero-bg min-h-screen pt-32 pb-20 flex items-center relative overflow-hidden">
-        <!-- Decorative Glow Orbs -->
-        <div id="orbLeft" class="absolute top-1/4 left-10 w-96 h-96 bg-rm-blue/20 rounded-full filter blur-[120px] pointer-events-none"></div>
-        <div id="orbRight" class="absolute bottom-10 right-10 w-96 h-96 bg-rm-gold/15 rounded-full filter blur-[140px] pointer-events-none"></div>
+    <!-- Main Content Area / Reports Section -->
+    <main class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Reports Section -->
+        <section id="reports" class="space-y-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-mono uppercase tracking-widest text-rm-gold bg-rm-gold/10 px-3 py-1 rounded-full border border-rm-gold/30">Analytics Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 font-outfit">주요 데이터 분석 보고서</h2>
+                <p class="text-gray-400 mt-2 text-sm sm:text-base">공공데이터 및 통계 자료를 바탕으로 탐색적 데이터 분석(EDA)과 시각화를 진행한 주요 리포트 목록입니다.</p>
+            </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Card Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                <!-- Hero Left: Text Content -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div id="heroBadge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-rm-gold/40 text-rm-gold text-xs font-semibold uppercase tracking-wider">
-                        <i id="heroBadgeIcon" class="fa-solid fa-shield-halved"></i> <span id="heroBadgeText">Real Madrid Spirit Data Analyst</span>
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                        데이터로 시야를 넓히고,<br>
-                        <span class="gold-gradient-text">JSW의 가치</span>를 증명합니다.
-                    </h1>
-
-                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
-                        공공 데이터와 사회 지표 속 잠재된 패턴을 발굴합니다.<br class="hidden sm:block">
-                        <strong>대학알리미</strong>의 교육·진로 데이터와 <strong>도로교통공단</strong>의 교통 안전 분석을 통합하여 Insight를 창출하는 데이터 분석가 JSW입니다.
-                    </p>
-
-                    <!-- Key Badges -->
-                    <div class="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <div class="flex items-center gap-3 px-4 py-3 rounded-xl glass-card border-l-4 border-rm-gold">
-                            <i class="fa-solid fa-graduation-cap text-rm-gold text-xl"></i>
-                            <div class="text-left">
-                                <p class="text-xs text-gray-400">진로 보고서</p>
-                                <p class="text-sm font-bold text-white">대학알리미 API/Data</p>
-                            </div>
+                <!-- Card 1: 대학알리미 데이터 기반 전국 대학 진로 & 취업 실태 분석 보고서 -->
+                <div class="glass-card rounded-2xl p-6 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-rm-blue/30 text-sky-400 border border-rm-blue/50">
+                                <i class="fa-solid fa-graduation-cap mr-1"></i> 대학알리미
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">2026.02</span>
                         </div>
-
-                        <div class="flex items-center gap-3 px-4 py-3 rounded-xl glass-card border-l-4 border-rm-blue">
-                            <i class="fa-solid fa-car-burst text-rm-blue text-xl"></i>
-                            <div class="text-left">
-                                <p class="text-xs text-gray-400">교통 데이터 보고서</p>
-                                <p class="text-sm font-bold text-white">도로교통공단 Big Data</p>
-                            </div>
+                        <h3 class="text-xl font-bold text-white mb-3 hover:text-rm-gold transition-colors">
+                            전국 대학 진로 &amp; 취업 실태 분석 보고서
+                        </h3>
+                        <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                            전국 주요 대학의 취업률, 유지취업률, 전공계열별 진로 현황 데이터를 다각도로 분석하여 수도권-비수도권 간 불균형 및 주요 영향 요인을 다룬 보고서입니다.
+                        </p>
+                        <!-- Visual Area Sample -->
+                        <div class="w-full h-40 bg-rm-navy/60 rounded-xl border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative">
+                            <i class="fa-solid fa-chart-column text-4xl text-rm-gold/70"></i>
                         </div>
                     </div>
-
-                    <!-- Call to Action Buttons -->
-                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#reports" id="heroCtaPrimary" class="px-8 py-4 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-extrabold text-base shadow-[0_0_25px_rgba(254,190,16,0.5)] hover:shadow-[0_0_35px_rgba(254,190,16,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-chart-pie"></i> 분석 보고서 즉시 확인
-                        </a>
-                        <a href="#timeline" class="px-8 py-4 rounded-xl glass-card text-white font-bold text-base hover:bg-white/10 transition-all border border-white/20 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-user-astronaut"></i> JSW 히스토리
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs text-gray-400 font-mono">Python / Pandas / Seaborn</span>
+                        <a href="#" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
+                            자세히 보기 <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Hero Right: Dynamic Club Inspired Player Card Display -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div id="playerCardWrap" class="relative w-full max-w-sm rounded-2xl p-1 bg-gradient-to-b from-rm-gold via-rm-blue to-transparent gold-border-glow transition-all duration-500 hover:scale-105">
-                        <div class="bg-rm-navy/90 rounded-2xl p-6 relative overflow-hidden backdrop-blur-xl">
-                            <!-- Madrid Crest & Card Header -->
-                            <div class="flex justify-between items-start mb-6 border-b border-white/10 pb-4">
-                                <div>
-                                    <span class="text-xs uppercase tracking-widest text-rm-gold font-mono font-semibold">OVERALL RATING</span>
-                                    <div class="text-5xl font-black font-outfit text-white">99 <span class="text-sm text-rm-gold">OVR</span></div>
-                                </div>
-                                <div class="text-right flex flex-col items-end">
-                                    <!-- Dynamic Player Card Crest Emblem -->
-                                    <div id="cardCrestContainer" class="w-12 h-14 transition-transform duration-300 hover:scale-110">
-                                        <!-- Injected via JS -->
-                                    </div>
-                                    <div id="cardRoleText" class="text-[11px] text-gray-400 mt-1 font-mono">ROLE: RM ANALYST</div>
-                                </div>
-                            </div>
-
-                            <!-- Avatar & Position -->
-                            <div class="flex items-center gap-5 my-6">
-                                <div id="avatarBorder" class="w-20 h-20 rounded-full bg-gradient-to-tr from-rm-blue via-rm-navy to-rm-gold p-1 shadow-inner flex-shrink-0">
-                                    <div class="w-full h-full rounded-full bg-rm-dark flex items-center justify-center text-3xl text-rm-gold font-black">
-                                        JSW
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-black text-white tracking-wide">JSW (정성우)</h3>
-                                    <p id="cardSubtext" class="text-xs text-rm-gold font-mono">Data Science & Policy Analytics</p>
-                                    <div class="mt-2 flex gap-1 text-[10px]">
-                                        <span class="bg-rm-blue/40 text-blue-200 px-2 py-0.5 rounded border border-rm-blue/50">Python</span>
-                                        <span class="bg-rm-gold/20 text-rm-gold px-2 py-0.5 rounded border border-rm-gold/40">SQL</span>
-                                        <span class="bg-purple-900/40 text-purple-200 px-2 py-0.5 rounded border border-purple-500/40">Tableau</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- FIFA/EA-Style Stats Grid -->
-                            <div class="grid grid-cols-2 gap-3 text-xs font-mono pt-2 border-t border-white/10">
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">DAT (데이터수집)</span>
-                                    <span class="font-bold text-rm-gold">97</span>
-                                </div>
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">VIS (시각화)</span>
-                                    <span class="font-bold text-rm-gold">98</span>
-                                </div>
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">STA (통계분석)</span>
-                                    <span class="font-bold text-rm-gold">95</span>
-                                </div>
-                                <div class="flex justify-between p-2 rounded bg-white/5">
-                                    <span class="text-gray-400">PAS (열정/도전)</span>
-                                    <span class="font-bold text-rm-gold">99</span>
-                                </div>
-                            </div>
-
-                            <!-- Footer Quote -->
-                            <div id="cardQuoteText" class="mt-5 text-center text-[11px] text-gray-400 italic">
-                                "¡Hala Madrid! 경기의 흐름을 바꾸듯, 데이터로 인사이트를 지배합니다."
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Data Analysis Reports Showcase Section -->
-    <section id="reports" class="py-24 bg-rm-dark/95 relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Title Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                <span class="text-rm-gold font-mono text-sm uppercase tracking-widest font-bold">CORE PROJECTS & REPORTS</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-                    주요 데이터 분석 보고서
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-rm-blue to-rm-gold mx-auto rounded-full"></div>
-                <p class="text-gray-400 text-sm sm:text-base">
-                    공공 빅데이터를 다각도로 분석하여 작성된 JSW의 대표 보고서입니다.<br>각 카드를 클릭하면 상세 인터랙티브 차트 및 요약 보고서를 확인할 수 있습니다.
-                </p>
-            </div>
-
-            <!-- Cards Grid (2 Major Reports) -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                <!-- CARD 1: 대학알리미 진로 보고서 -->
-                <div class="glass-card rounded-2xl p-6 sm:p-8 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative group">
-                    <div class="absolute top-4 right-4 bg-rm-gold/20 text-rm-gold border border-rm-gold/40 text-xs font-bold px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
-                        <i class="fa-solid fa-graduation-cap"></i> 대학알리미
-                    </div>
-
+                <!-- Card 2: 도로교통공단 데이터 기반 교통사고 위험 요인 및 패턴 분석 보고서 -->
+                <div class="glass-card rounded-2xl p-6 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
                     <div>
-                        <!-- Icon Header -->
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-rm-gold flex items-center justify-center text-rm-dark text-2xl font-black mb-6 shadow-lg">
-                            <i class="fa-solid fa-user-graduate"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-rm-gold/20 text-rm-gold border border-rm-gold/40">
+                                <i class="fa-solid fa-triangle-exclamation mr-1"></i> 도로교통공단
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">2026.03</span>
                         </div>
-
-                        <h3 class="text-2xl font-bold text-white group-hover:text-rm-gold transition-colors mb-3">
-                            대학알리미 데이터 기반<br>전국 대학 진로 & 취업 실태 분석 보고서
+                        <h3 class="text-xl font-bold text-white mb-3 hover:text-rm-gold transition-colors">
+                            교통사고 위험 요인 및 패턴 분석 보고서
                         </h3>
-
-                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                            교육부 '대학알리미(Academy Info)' 공시 데이터를 기반으로 계열별 취업률, 대학원 진학률, 주요 전공별 직무 연계성 및 필요 스킬셋 패러다임을 정밀 분석한 진로 보고서입니다.
+                        <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                            도로교통공단 사고 빅데이터를 수집하여 시간대별, 기상 조건별, 도로 형태별 발생 빈도 및 치사율 상관관계를 지리정보(GIS) 분석과 함께 수록하였습니다.
                         </p>
-
-                        <!-- Key Metrics Mini-Stats -->
-                        <div class="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-rm-navy/60 border border-white/5">
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">분석 대학 수</span>
-                                <span class="text-base font-extrabold text-rm-gold">224개교</span>
-                            </div>
-                            <div class="text-center border-x border-white/10">
-                                <span class="block text-[11px] text-gray-400">평균 취업률</span>
-                                <span class="text-base font-extrabold text-white">67.2%</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">주요 스킬 지표</span>
-                                <span class="text-base font-extrabold text-blue-400">Data & AI</span>
-                            </div>
-                        </div>
-
-                        <!-- Highlights Tags -->
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">계열별 취업 격차</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">진학 vs 취업 트렌드</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">역량 매핑</span>
+                        <!-- Visual Area Sample -->
+                        <div class="w-full h-40 bg-rm-navy/60 rounded-xl border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative">
+                            <i class="fa-solid fa-map-location-dot text-4xl text-sky-400/70"></i>
                         </div>
                     </div>
-
-                    <!-- Action Button -->
-                    <a href="./data1/index.html" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-extrabold text-sm hover:shadow-[0_0_20px_rgba(254,190,16,0.6)] transition-all flex items-center justify-center gap-2 text-center">
-                        <i class="fa-solid fa-chart-column"></i> 진로 보고서 대시보드 열람
-                    </a>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs text-gray-400 font-mono">Folium / GeoPandas / Matplotlib</span>
+                        <a href="#" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
+                            자세히 보기 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- CARD 2: 도로교통공단 교통 데이터분석 보고서 -->
-                <div class="glass-card rounded-2xl p-6 sm:p-8 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative group">
-                    <div class="absolute top-4 right-4 bg-rm-blue/30 text-blue-300 border border-rm-blue/50 text-xs font-bold px-3 py-1 rounded-full font-mono flex items-center gap-1.5">
-                        <i class="fa-solid fa-car"></i> 도로교통공단
-                    </div>
-
+                <!-- Card 3 (NEW): 법규위반 항목별 교통사고 분석 -->
+                <div class="glass-card rounded-2xl p-6 gold-border-glow transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
                     <div>
-                        <!-- Icon Header -->
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rm-blue to-blue-600 flex items-center justify-center text-white text-2xl font-black mb-6 shadow-lg">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-red-900/40 text-red-300 border border-purple-500/40">
+                                <i class="fa-solid fa-gavel mr-1"></i> 법규위반 분석
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">2026.04</span>
                         </div>
-
-                        <h3 class="text-2xl font-bold text-white group-hover:text-rm-gold transition-colors mb-3">
-                            도로교통공단 데이터 기반<br>교통사고 위험 요인 및 패턴 분석 보고서
+                        <h3 class="text-xl font-bold text-white mb-3 hover:text-rm-gold transition-colors">
+                            법규위반 항목별 교통사고 분석
                         </h3>
-
-                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                            도로교통공단 TASS(교통사고분석시스템) 빅데이터를 분석하여 시간대별, 기상 상황별, 도로 유형별 사고 위험지수(Risk Index)를 산출하고 사고 예방 정책안을 도출한 안전 분석 보고서입니다.
+                        <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                            신호위반, 중앙선 침범, 안전운전 의무 불이행 등 세부 법규위반 유형별 사고 치사율과 발생 건수를 계량화하여 고위험 위반 유형 집중 관리 방안을 제안합니다.
                         </p>
-
-                        <!-- Key Metrics Mini-Stats -->
-                        <div class="grid grid-cols-3 gap-3 mb-6 p-4 rounded-xl bg-rm-navy/60 border border-white/5">
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">분석 건수</span>
-                                <span class="text-base font-extrabold text-rm-gold">18만+ 건</span>
-                            </div>
-                            <div class="text-center border-x border-white/10">
-                                <span class="block text-[11px] text-gray-400">위험 최고시간</span>
-                                <span class="text-base font-extrabold text-red-400">22시~02시</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="block text-[11px] text-gray-400">핵심 변수</span>
-                                <span class="text-base font-extrabold text-blue-400">야간/빗길</span>
-                            </div>
-                        </div>
-
-                        <!-- Highlights Tags -->
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">치사율 위험지수</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">사고 원인 세분화</span>
-                            <span class="text-xs px-2.5 py-1 rounded bg-white/5 text-gray-300 border border-white/10">안전 정책 제안</span>
+                        <!-- Visual Area Sample -->
+                        <div class="w-full h-40 bg-rm-navy/60 rounded-xl border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative">
+                            <i class="fa-solid fa-chart-pie text-4xl text-red-400/70"></i>
                         </div>
                     </div>
-
-                    <!-- Action Button -->
-                    <a href="./data2/index.html" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-rm-blue to-blue-600 text-white font-extrabold text-sm hover:shadow-[0_0_20px_rgba(0,82,251,0.6)] transition-all flex items-center justify-center gap-2 text-center">
-                        <i class="fa-solid fa-chart-line"></i> 교통 분석 보고서 대시보드 열람
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Activity Timeline Section -->
-    <section id="timeline" class="py-24 bg-rm-navy/40 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-rm-gold font-mono text-sm uppercase tracking-widest font-bold">JSW ACTIVITY HISTORY</span>
-                <h2 class="text-3xl font-bold text-white">활동 내역 & 데이터 여정</h2>
-                <div class="w-16 h-1 bg-rm-gold mx-auto rounded-full"></div>
-            </div>
-
-            <div class="relative border-l-2 border-rm-blue/40 ml-4 md:ml-32 space-y-12">
-
-                <!-- Timeline Item 1 -->
-                <div class="relative pl-8 md:pl-12">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-rm-gold text-rm-dark flex items-center justify-center text-sm font-bold shadow-lg">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-rm-gold font-bold">
-                        2026.01 - PRESENT
-                    </div>
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-rm-gold">
-                        <span class="md:hidden text-xs font-mono text-rm-gold font-bold block mb-1">2026.01 - PRESENT</span>
-                        <h3 class="text-lg font-bold text-white">공공데이터 활용 데이터 분석 프로젝트 리드</h3>
-                        <p class="text-sm text-gray-300 mt-2">
-                            대학알리미 및 도로교통공단 오픈 API 데이터를 연계한 종합 포트폴리오 웹 시각화 구축. 데이터 정제부터 인사이트 도출 보고서 통합 작성.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="relative pl-8 md:pl-12">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-rm-blue text-white flex items-center justify-center text-sm font-bold shadow-lg">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-gray-400 font-bold">
-                        2025.07 - 2025.12
-                    </div>
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-rm-blue">
-                        <span class="md:hidden text-xs font-mono text-gray-400 font-bold block mb-1">2025.07 - 2025.12</span>
-                        <h3 class="text-lg font-bold text-white">빅데이터 분석 및 통계 모델링 스터디 리더</h3>
-                        <p class="text-sm text-gray-300 mt-2">
-                            Python(Pandas, Seaborn)과 R을 활용한 시계열 데이터 분석 및 머신러닝 회귀 모델 연구. 팀 내 프로젝트 총괄 및 보고서 기획.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="relative pl-8 md:pl-12">
-                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-700 text-rm-gold flex items-center justify-center text-sm font-bold shadow-lg">
-                        <i class="fa-solid fa-certificate"></i>
-                    </div>
-                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-gray-400 font-bold">
-                        2025.03 - 2025.06
-                    </div>
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-slate-500">
-                        <span class="md:hidden text-xs font-mono text-gray-400 font-bold block mb-1">2025.03 - 2025.06</span>
-                        <h3 class="text-lg font-bold text-white">데이터 분석 자격 및 정책 과제 연구</h3>
-                        <p class="text-sm text-gray-300 mt-2">
-                            ADsP(데이터분석 준전문가) 및 SQLD 자격 취득과 공공 정책 데이터 가공 방법론 습득.
-                        </p>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-xs text-gray-400 font-mono">Python / Scikit-Learn / Plotly</span>
+                        <a href="#" class="text-xs font-bold text-rm-gold hover:underline flex items-center gap-1">
+                            자세히 보기 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Tech Stack Section -->
-    <section id="skills" class="py-20 bg-rm-dark relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-                <span class="text-rm-gold font-mono text-sm uppercase tracking-widest font-bold">ANALYTICAL CAPABILITIES</span>
-                <h2 class="text-3xl font-bold text-white">기술 스택 & 핵심 역량</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-rm-blue to-rm-gold mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-brands fa-python text-3xl text-yellow-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Python</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Pandas, Scikit-learn</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-database text-3xl text-blue-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">SQL</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">MySQL, PostgreSQL</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-chart-simple text-3xl text-rm-gold mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Tableau</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Interactive Dashboards</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-file-excel text-3xl text-emerald-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Excel/R</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Statistical Modeling</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-code text-3xl text-sky-400 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">API Integration</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Public Open Data</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl text-center hover:border-rm-gold/50 transition-all">
-                    <i class="fa-solid fa-lightbulb text-3xl text-amber-300 mb-3 block"></i>
-                    <h4 class="text-sm font-bold text-white">Insight Proposal</h4>
-                    <p class="text-[11px] text-gray-400 mt-1">Policy & Career Strategy</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-rm-navy py-12 border-t border-white/10 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-rm-gold flex items-center justify-center text-rm-dark font-black text-sm">
-                    JSW
-                </div>
-                <span class="text-sm font-bold text-white tracking-wider">JSW Portfolio & Data Lab</span>
-            </div>
-
-            <div class="text-center text-xs text-gray-400 font-mono">
-                <p>© 2026 JSW All Rights Reserved. Inspired by Real Madrid C.F. Aesthetics.</p>
-                <p class="text-rm-gold/70 mt-1">대학알리미 & 도로교통공단 공공 빅데이터 활용 보고서</p>
-            </div>
-
-            <div class="flex gap-4 text-gray-400 text-lg">
-                <a href="#" class="hover:text-rm-gold transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="hover:text-rm-gold transition-colors"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#" class="hover:text-rm-gold transition-colors"><i class="fa-solid fa-crown"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- MODAL 1: 대학알리미 진로 보고서 모달 -->
-    <div id="careerModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md overflow-y-auto p-4 sm:p-6 lg:p-8">
-        <div class="modal-box max-w-5xl mx-auto bg-rm-navy border border-rm-gold/40 rounded-2xl shadow-2xl overflow-hidden my-8">
-            
-            <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-rm-dark via-rm-navy to-rm-blue p-6 border-b border-white/10 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-rm-gold text-rm-dark flex items-center justify-center font-bold text-lg">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">대학알리미 데이터 기반 진로 보고서</h3>
-                        <p class="text-xs text-rm-gold">전국 주요 대학 전공별 취업률 & 역량 지표 대시보드</p>
-                    </div>
-                </div>
-                <button onclick="closeCareerModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- Modal Content Body -->
-            <div class="p-6 space-y-8">
-                
-                <!-- Summary KPI Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">공학계열 평균 취업률</span>
-                        <div class="text-2xl font-black text-rm-gold mt-1">74.8%</div>
-                        <span class="text-[10px] text-emerald-400"><i class="fa-solid fa-arrow-up"></i> 전년 대비 +2.3%</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">인문사회계열 평균 취업률</span>
-                        <div class="text-2xl font-black text-sky-400 mt-1">61.5%</div>
-                        <span class="text-[10px] text-gray-400">직무 융합 스킬 보유 시 상향</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">자연과학계열 대학원 진학률</span>
-                        <div class="text-2xl font-black text-purple-400 mt-1">28.4%</div>
-                        <span class="text-[10px] text-purple-300">연구개발 직무 중심</span>
-                    </div>
-                </div>
-
-                <!-- Charts Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Chart 1: Bar Chart -->
-                    <div class="lg:col-span-7 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-bar text-rm-gold"></i> 주요 계열별 취업률 비교 (대학알리미 데이터)
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="careerBarChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Chart 2: Radar Skill Chart -->
-                    <div class="lg:col-span-5 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-bullseye text-rm-gold"></i> 미래 진로 요구 역량 (Competency)
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="careerRadarChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text Insight Summary -->
-                <div class="glass-card p-5 rounded-xl border-l-4 border-rm-gold space-y-2">
-                    <h4 class="text-base font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-lightbulb text-rm-gold"></i> JSW 분석 핵심 시사점 (Key Findings)
-                    </h4>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        1. <strong>데이터 활용 역량의 유무</strong>가 인문·사회계열 취업률 격차를 최대 18%p 벌어지게 만드는 핵심 요인으로 분석되었습니다.<br>
-                        2. 단순 전공 지식 외에도, <strong>공공데이터 및 빅데이터 도구(Python, SQL) 활용 능력</strong>이 신입 구직자의 가장 경쟁력 있는 차별화 요소로 작용합니다.
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="bg-rm-dark/80 p-4 px-6 border-t border-white/10 flex justify-between items-center">
-                <span class="text-xs text-gray-400 font-mono">Data Source: 교육부 대학알리미 (Academy Info)</span>
-                <button onclick="closeCareerModal()" class="px-5 py-2 rounded-lg bg-rm-gold text-rm-dark font-bold text-xs hover:bg-yellow-400 transition-colors">
-                    닫기
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL 2: 도로교통공단 교통데이터분석 보고서 모달 -->
-    <div id="trafficModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md overflow-y-auto p-4 sm:p-6 lg:p-8">
-        <div class="modal-box max-w-5xl mx-auto bg-rm-navy border border-rm-blue/50 rounded-2xl shadow-2xl overflow-hidden my-8">
-            
-            <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-rm-dark via-rm-navy to-blue-900 p-6 border-b border-white/10 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-rm-blue text-white flex items-center justify-center font-bold text-lg">
-                        <i class="fa-solid fa-car-side"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">도로교통공단 교통 데이터 분석 보고서</h3>
-                        <p class="text-xs text-blue-300">시간대별 사고 발생 건수 및 치사율 위험지수 분석 대시보드</p>
-                    </div>
-                </div>
-                <button onclick="closeTrafficModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-lg transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- Modal Content Body -->
-            <div class="p-6 space-y-8">
-                
-                <!-- Summary KPI Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">분석 대상 총 사고 건수</span>
-                        <div class="text-2xl font-black text-blue-400 mt-1">184,210 건</div>
-                        <span class="text-[10px] text-gray-400">도로교통공단 연간 데이터</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">야간 시간대 평균 치사율</span>
-                        <div class="text-2xl font-black text-red-400 mt-1">2.41 %</div>
-                        <span class="text-[10px] text-red-300"><i class="fa-solid fa-triangle-exclamation"></i> 주간 대비 1.8배 높음</span>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl border border-white/10">
-                        <span class="text-xs text-gray-400">빗길 사고 위험 가중치</span>
-                        <div class="text-2xl font-black text-rm-gold mt-1">+34.5 %</div>
-                        <span class="text-[10px] text-gray-400">제동거리 지수 포함</span>
-                    </div>
-                </div>
-
-                <!-- Charts Row -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Chart 1: Line Chart -->
-                    <div class="lg:col-span-7 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-line text-blue-400"></i> 시간대별 사고 발생 트렌드 및 위험도
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="trafficLineChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Chart 2: Doughnut Chart -->
-                    <div class="lg:col-span-5 glass-card p-5 rounded-xl border border-white/10">
-                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-pie-chart text-blue-400"></i> 주요 사고 원인 비중
-                        </h4>
-                        <div class="h-64 relative">
-                            <canvas id="trafficPieChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text Insight Summary -->
-                <div class="glass-card p-5 rounded-xl border-l-4 border-rm-blue space-y-2">
-                    <h4 class="text-base font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-rm-blue"></i> 교통안전 개선 정책 제안
-                    </h4>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        1. <strong>심야 시간(22시~04시) 가변형 속도제한 장치</strong> 설치 시 사망사고를 최소 22% 감소시킬 수 있는 시뮬레이션 결과 도출.<br>
-                        2. 빗길 우천 시 사고 다발 구간 12개 지점에 대한 <strong>스마트 발광형 표지판 선제 배치</strong> 권고.
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="bg-rm-dark/80 p-4 px-6 border-t border-white/10 flex justify-between items-center">
-                <span class="text-xs text-gray-400 font-mono">Data Source: 도로교통공단 TASS (Traffic Accident Analysis System)</span>
-                <button onclick="closeTrafficModal()" class="px-5 py-2 rounded-lg bg-rm-blue text-white font-bold text-xs hover:bg-blue-600 transition-colors">
-                    닫기
-                </button>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <script>
-        // Club Crest SVG Definitions
-        function getClubEmblemSVG(theme) {
-            if (theme === 'mcfc') {
-                return `
-                <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="46" fill="#031329" stroke="#6CABDD" stroke-width="4"/>
-                    <circle cx="50" cy="50" r="37" fill="#6CABDD"/>
-                    <circle cx="50" cy="50" r="34" fill="#031329"/>
-                    <!-- Shield -->
-                    <path d="M34 32 H66 V56 C66 66 50 76 50 76 C50 76 34 66 34 56 Z" fill="#6CABDD" stroke="#FFFFFF" stroke-width="1.5"/>
-                    <!-- Ship -->
-                    <path d="M40 43 C43 39 57 39 60 43 L58 48 H42 Z" fill="#FEBE10"/>
-                    <path d="M50 36 V43" stroke="#FEBE10" stroke-width="2"/>
-                    <!-- Red Rose Stripes -->
-                    <path d="M42 56 H58 M44 61 H56 M47 66 H53" stroke="#DA020E" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>`;
-            } else if (theme === 'mufc') {
-                return `
-                <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(239,68,68,0.7)]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 15 H80 L74 78 L50 94 L26 78 Z" fill="#8B0000" stroke="#FFE600" stroke-width="3"/>
-                    <path d="M22 18 H78 V34 H22 Z" fill="#FFE600"/>
-                    <path d="M25 68 H75 L50 88 Z" fill="#FFE600"/>
-                    <rect x="25" y="34" width="50" height="34" fill="#DA020E"/>
-                    <!-- Ship on top -->
-                    <path d="M38 27 C43 23 57 23 62 27 L60 32 H40 Z" fill="#8B0000"/>
-                    <path d="M50 21 V27" stroke="#8B0000" stroke-width="2"/>
-                    <!-- Devil Trident Center -->
-                    <path d="M50 42 L50 62 M43 47 C43 54 57 54 57 47 M43 44 V48 M50 40 V46 M57 44 V48" stroke="#FFE600" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                </svg>`;
-            } else {
-                // Real Madrid Default (Dark / Light)
-                return `
-                <svg viewBox="0 0 100 120" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(254,190,16,0.7)]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Crown -->
-                    <path d="M32 28 L38 18 L50 25 L62 18 L68 28 Z" fill="#FEBE10" stroke="#D49B00" stroke-width="1.5"/>
-                    <circle cx="50" cy="14" r="3" fill="#FEBE10"/>
-                    <circle cx="34" cy="18" r="2" fill="#38BDF8"/>
-                    <circle cx="66" cy="18" r="2" fill="#38BDF8"/>
-                    <rect x="30" y="28" width="40" height="6" rx="2" fill="#EE2524"/>
-                    <!-- Circular Crest -->
-                    <circle cx="50" cy="72" r="32" fill="#0B1E36" stroke="#FEBE10" stroke-width="4"/>
-                    <circle cx="50" cy="72" r="26" fill="#FFFFFF" stroke="#FEBE10" stroke-width="1.5"/>
-                    <!-- Blue Sash -->
-                    <path d="M28 52 L68 92 L74 84 L34 44 Z" fill="#00529F"/>
-                    <!-- Monogram Letters -->
-                    <text x="50" y="80" font-family="'Outfit', sans-serif" font-weight="900" font-size="24" fill="#FEBE10" text-anchor="middle">M</text>
-                    <text x="50" y="78" font-family="'Outfit', sans-serif" font-weight="800" font-size="15" fill="#00529F" text-anchor="middle">CF</text>
-                </svg>`;
-            }
-        }
-
-        // Mini button icon SVGs
-        function initMiniCrests() {
-            const rmEl = document.getElementById('miniCrestRM');
-            const mcfcEl = document.getElementById('miniCrestMCFC');
-            const mufcEl = document.getElementById('miniCrestMUFC');
-            if (rmEl) rmEl.innerHTML = getClubEmblemSVG('rm-dark');
-            if (mcfcEl) mcfcEl.innerHTML = getClubEmblemSVG('mcfc');
-            if (mufcEl) mufcEl.innerHTML = getClubEmblemSVG('mufc');
-        }
-
-        // Multi-Theme Controller Logic
-        let currentTheme = 'rm-dark';
-
         function setTheme(theme) {
-            currentTheme = theme;
             document.body.className = "antialiased text-gray-200 selection:bg-rm-gold selection:text-rm-dark";
-            
             if (theme === 'rm-light') {
                 document.body.classList.add('theme-rm-light');
             } else if (theme === 'mcfc') {
                 document.body.classList.add('theme-mcfc');
-            } else if (theme === 'mufc') {
-                document.body.classList.add('theme-mufc');
             }
-
-            localStorage.setItem('jsw_club_theme', theme);
-            updateThemeUIControls(theme);
-            updateClubElements(theme);
-
-            // Re-render open modal charts if visible
-            if (!document.getElementById('careerModal').classList.contains('hidden')) {
-                renderCareerCharts();
-            }
-            if (!document.getElementById('trafficModal').classList.contains('hidden')) {
-                renderTrafficCharts();
-            }
-        }
-
-        function updateThemeUIControls(theme) {
-            const btns = ['rm-dark', 'rm-light', 'mcfc', 'mufc'];
-            btns.forEach(b => {
-                const btnEl = document.getElementById('btn-' + b);
-                if (!btnEl) return;
-                if (b === theme) {
-                    btnEl.className = "px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-white bg-white/20 border border-white/40 shadow-sm";
-                } else {
-                    btnEl.className = "px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-gray-400 hover:text-white";
-                }
-            });
-
-            const mobileSelect = document.getElementById('mobileThemeSelect');
-            if (mobileSelect) mobileSelect.value = theme;
-        }
-
-        function updateClubElements(theme) {
-            const brandEmblemContainer = document.getElementById('brandEmblemContainer');
-            const cardCrestContainer = document.getElementById('cardCrestContainer');
-            const clubBadgeTag = document.getElementById('clubBadgeTag');
-            const clubSlogan = document.getElementById('clubSlogan');
-            const heroBadgeIcon = document.getElementById('heroBadgeIcon');
-            const heroBadgeText = document.getElementById('heroBadgeText');
-            const cardRoleText = document.getElementById('cardRoleText');
-            const cardQuoteText = document.getElementById('cardQuoteText');
-            const heroCtaPrimary = document.getElementById('heroCtaPrimary');
-
-            // Inject SVG emblems
-            const emblemSvg = getClubEmblemSVG(theme);
-            if (brandEmblemContainer) brandEmblemContainer.innerHTML = emblemSvg;
-            if (cardCrestContainer) cardCrestContainer.innerHTML = emblemSvg;
-
-            if (theme === 'mcfc') {
-                if (clubBadgeTag) {
-                    clubBadgeTag.innerText = "MCFC Analytics";
-                    clubBadgeTag.className = "text-xs px-2 py-0.5 rounded bg-sky-500/30 text-sky-200 font-mono uppercase tracking-widest border border-sky-400/40";
-                }
-                if (clubSlogan) clubSlogan.innerText = "Superbia in Proelio (Pride in Battle)";
-                if (heroBadgeIcon) heroBadgeIcon.className = "fa-solid fa-cloud-bolt text-sky-300";
-                if (heroBadgeText) heroBadgeText.innerText = "Manchester City Tactical Analyst";
-                if (cardRoleText) cardRoleText.innerText = "ROLE: MCFC ANALYST";
-                if (cardQuoteText) cardQuoteText.innerText = '"Cityzens! 완벽한 패스 워크처럼 정교한 빅데이터를 설계합니다."';
-                if (heroCtaPrimary) heroCtaPrimary.className = "px-8 py-4 rounded-xl bg-gradient-to-r from-sky-400 to-blue-600 text-white font-extrabold text-base shadow-[0_0_25px_rgba(56,189,248,0.5)] hover:shadow-[0_0_35px_rgba(56,189,248,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2";
-            } else if (theme === 'mufc') {
-                if (clubBadgeTag) {
-                    clubBadgeTag.innerText = "MUFC Analytics";
-                    clubBadgeTag.className = "text-xs px-2 py-0.5 rounded bg-red-600/30 text-red-300 font-mono uppercase tracking-widest border border-red-500/40";
-                }
-                if (clubSlogan) clubSlogan.innerText = "Glory Glory Man United";
-                if (heroBadgeIcon) heroBadgeIcon.className = "fa-solid fa-wand-magic-sparkles text-red-400";
-                if (heroBadgeText) heroBadgeText.innerText = "Manchester United Red Devil Analyst";
-                if (cardRoleText) cardRoleText.innerText = "ROLE: MUFC ANALYST";
-                if (cardQuoteText) cardQuoteText.innerText = '"Glory Glory! 극적인 버기 타임처럼 역전의 인사이트를 창출합니다."';
-                if (heroCtaPrimary) heroCtaPrimary.className = "px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-extrabold text-base shadow-[0_0_25px_rgba(220,38,38,0.5)] hover:shadow-[0_0_35px_rgba(220,38,38,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2";
-            } else {
-                // Real Madrid Default / Light
-                if (clubBadgeTag) {
-                    clubBadgeTag.innerText = "RM Analytics";
-                    clubBadgeTag.className = "text-xs px-2 py-0.5 rounded bg-rm-blue/60 text-rm-gold font-mono uppercase tracking-widest border border-rm-gold/30";
-                }
-                if (clubSlogan) clubSlogan.innerText = "Hala Madrid y nada más";
-                if (heroBadgeIcon) heroBadgeIcon.className = "fa-solid fa-shield-halved text-rm-gold";
-                if (heroBadgeText) heroBadgeText.innerText = "Real Madrid Spirit Data Analyst";
-                if (cardRoleText) cardRoleText.innerText = "ROLE: RM ANALYST";
-                if (cardQuoteText) cardQuoteText.innerText = '"¡Hala Madrid! 경기의 흐름을 바꾸듯, 데이터로 인사이트를 지배합니다."';
-                if (heroCtaPrimary) heroCtaPrimary.className = "px-8 py-4 rounded-xl bg-gradient-to-r from-rm-gold to-yellow-500 text-rm-dark font-extrabold text-base shadow-[0_0_25px_rgba(254,190,16,0.5)] hover:shadow-[0_0_35px_rgba(254,190,16,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2";
-            }
-        }
-
-        // Saved Theme Load & Mini Crest Initialization
-        window.addEventListener('DOMContentLoaded', () => {
-            initMiniCrests();
-            const savedTheme = localStorage.getItem('jsw_club_theme') || 'rm-dark';
-            setTheme(savedTheme);
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Global Chart Instances
-        let careerBarInstance = null;
-        let careerRadarInstance = null;
-        let trafficLineInstance = null;
-        let trafficPieInstance = null;
-
-        // Dynamic Chart Color Palette based on current active club theme
-        function getChartColors() {
-            if (currentTheme === 'rm-light') {
-                return {
-                    grid: 'rgba(0, 0, 0, 0.1)',
-                    text: '#334155',
-                    radarGrid: 'rgba(0, 0, 0, 0.15)',
-                    radarText: '#0F172A',
-                    primary: '#FEBE10',
-                    secondary: '#00529F'
-                };
-            } else if (currentTheme === 'mcfc') {
-                return {
-                    grid: 'rgba(108, 171, 221, 0.15)',
-                    text: '#98C5E9',
-                    radarGrid: 'rgba(108, 171, 221, 0.25)',
-                    radarText: '#E0F2FE',
-                    primary: '#38BDF8',
-                    secondary: '#0284C7'
-                };
-            } else if (currentTheme === 'mufc') {
-                return {
-                    grid: 'rgba(239, 68, 68, 0.15)',
-                    text: '#FCA5A5',
-                    radarGrid: 'rgba(239, 68, 68, 0.25)',
-                    radarText: '#FEE2E2',
-                    primary: '#EF4444',
-                    secondary: '#DC2626'
-                };
-            } else {
-                // Real Madrid Dark
-                return {
-                    grid: 'rgba(255, 255, 255, 0.1)',
-                    text: '#9CA3AF',
-                    radarGrid: 'rgba(255, 255, 255, 0.15)',
-                    radarText: '#E5E7EB',
-                    primary: '#FEBE10',
-                    secondary: '#00529F'
-                };
-            }
-        }
-
-        // Modal Controls for Career Report
-        function openCareerModal() {
-            document.getElementById('careerModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            setTimeout(renderCareerCharts, 100);
-        }
-
-        function closeCareerModal() {
-            document.getElementById('careerModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Modal Controls for Traffic Report
-        function openTrafficModal() {
-            document.getElementById('trafficModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            setTimeout(renderTrafficCharts, 100);
-        }
-
-        function closeTrafficModal() {
-            document.getElementById('trafficModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Render Career Charts (University Academy Info Data)
-        function renderCareerCharts() {
-            if (careerBarInstance) careerBarInstance.destroy();
-            if (careerRadarInstance) careerRadarInstance.destroy();
-
-            const palette = getChartColors();
-
-            const ctxBar = document.getElementById('careerBarChart').getContext('2d');
-            careerBarInstance = new Chart(ctxBar, {
-                type: 'bar',
-                data: {
-                    labels: ['공학계열', '자연과학', '인문사회', '예체능', '의약계열'],
-                    datasets: [{
-                        label: '취업률 (%)',
-                        data: [74.8, 63.2, 61.5, 58.9, 82.1],
-                        backgroundColor: [
-                            palette.primary,
-                            palette.secondary,
-                            'rgba(147, 51, 234, 0.85)',
-                            'rgba(236, 72, 153, 0.85)',
-                            'rgba(16, 185, 129, 0.85)'
-                        ],
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            grid: { color: palette.grid },
-                            ticks: { color: palette.text }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: palette.text }
-                        }
-                    }
-                }
-            });
-
-            const ctxRadar = document.getElementById('careerRadarChart').getContext('2d');
-            careerRadarInstance = new Chart(ctxRadar, {
-                type: 'radar',
-                data: {
-                    labels: ['데이터분석', '문제해결력', '전공지식', '커뮤니케이션', '도구활용(SQL/Py)', '글로벌역량'],
-                    datasets: [{
-                        label: '신입 채용 중요도 지수',
-                        data: [92, 88, 75, 80, 90, 65],
-                        backgroundColor: palette.primary + '33',
-                        borderColor: palette.primary,
-                        pointBackgroundColor: palette.primary
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        r: {
-                            grid: { color: palette.radarGrid },
-                            angleLines: { color: palette.radarGrid },
-                            pointLabels: { color: palette.radarText, font: { size: 10 } },
-                            ticks: { display: false, backdropColor: 'transparent' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Render Traffic Charts (KoRoad Traffic Data)
-        function renderTrafficCharts() {
-            if (trafficLineInstance) trafficLineInstance.destroy();
-            if (trafficPieInstance) trafficPieInstance.destroy();
-
-            const palette = getChartColors();
-
-            const ctxLine = document.getElementById('trafficLineChart').getContext('2d');
-            trafficLineInstance = new Chart(ctxLine, {
-                type: 'line',
-                data: {
-                    labels: ['02시', '06시', '10시', '14시', '18시', '22시'],
-                    datasets: [
-                        {
-                            label: '사고 건수 지수',
-                            data: [35, 42, 88, 95, 110, 78],
-                            borderColor: palette.secondary,
-                            backgroundColor: palette.secondary + '22',
-                            fill: true,
-                            tension: 0.4
-                        },
-                        {
-                            label: '치사율 위험도 Index',
-                            data: [85, 40, 25, 30, 45, 92],
-                            borderColor: '#EF4444',
-                            borderDash: [5, 5],
-                            backgroundColor: 'transparent',
-                            tension: 0.4
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { labels: { color: palette.text, font: { size: 11 } } }
-                    },
-                    scales: {
-                        y: {
-                            grid: { color: palette.grid },
-                            ticks: { color: palette.text }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: palette.text }
-                        }
-                    }
-                }
-            });
-
-            const ctxPie = document.getElementById('trafficPieChart').getContext('2d');
-            trafficPieInstance = new Chart(ctxPie, {
-                type: 'doughnut',
-                data: {
-                    labels: ['안전운전 불이행', '신호위반', '안전거리 미확보', '보행자 보호위반', '기타'],
-                    datasets: [{
-                        data: [55.4, 14.2, 12.8, 9.6, 8.0],
-                        backgroundColor: [
-                            palette.secondary,
-                            palette.primary,
-                            '#10B981',
-                            '#F59E0B',
-                            '#6B7280'
-                        ],
-                        borderWidth: 2,
-                        borderColor: currentTheme === 'rm-light' ? '#FFFFFF' : '#0B1E36'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: palette.text, font: { size: 10 } }
-                        }
-                    }
-                }
-            });
         }
     </script>
 </body>
