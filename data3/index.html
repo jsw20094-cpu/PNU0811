@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025년 교통사고 발생 현황 및 위험도 분석 보고서</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-12">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <i class="fa-solid fa-car-burst text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold leading-tight sm:text-xl">2025 교통사고 심층 분석 보고서</h1>
+                    <p class="text-xs text-slate-400">발생 현황 및 법규위반 위험도 탐지</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="window.print()" class="hidden sm:inline-flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3 py-2 rounded-lg transition border border-slate-700">
+                    <i class="fa-solid fa-print"></i>
+                    <span>보고서 인쇄</span>
+                </button>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900 text-blue-200 border border-blue-700">
+                    <i class="fa-solid fa-clock text-xs mr-1"></i> 2025 연간 통계
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+
+        <!-- Banner / Intro Title -->
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+                <i class="fa-solid fa-chart-line text-[240px]"></i>
+            </div>
+            <div class="relative z-10 max-w-3xl">
+                <span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-400/30 uppercase tracking-wider">교통안전 데이터 종합 분석</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mt-3 tracking-tight leading-snug">
+                    법규위반 위험도 분석 및 요일별 치명도 탐지
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
+                    2025년 한 해 발생한 19만 여 건의 교통사고 데이터를 빅데이터 관점에서 분석하여 단순 다발 항목과 고위험 치명 항목을 구분하고 실효성 있는 정책 제언을 제시합니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 1. 총괄 현황 KPI Cards -->
+        <section>
+            <div class="flex items-center space-x-2 mb-4">
+                <span class="w-2 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-xl font-bold text-slate-900">1. 2025년 교통사고 총괄 현황</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-xl p-5 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase text-slate-500">총 사고 건수</span>
+                        <span class="p-2 bg-blue-50 text-blue-600 rounded-lg"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="text-2xl font-black text-slate-900">193,889 <span class="text-sm font-normal text-slate-500">건</span></div>
+                        <p class="text-xs text-slate-500 mt-1">2025년 연간 누적 사고</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card rounded-xl p-5 shadow-sm hover:shadow-md transition border-l-4 border-l-rose-500">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase text-rose-600">총 사망자 수</span>
+                        <span class="p-2 bg-rose-50 text-rose-600 rounded-lg"><i class="fa-solid fa-skull"></i></span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="text-2xl font-black text-rose-600">2,549 <span class="text-sm font-normal text-slate-500">명</span></div>
+                        <p class="text-xs text-slate-500 mt-1">교통사고 인명 손실</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card rounded-xl p-5 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase text-slate-500">총 부상자 수</span>
+                        <span class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i class="fa-solid fa-user-ninja"></i></span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="text-2xl font-black text-slate-900">271,751 <span class="text-sm font-normal text-slate-500">명</span></div>
+                        <p class="text-xs text-slate-500 mt-1">상해 피해 발생 인원</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="glass-card rounded-xl p-5 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase text-slate-500">평균 치사율</span>
+                        <span class="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><i class="fa-solid fa-percent"></i></span>
+                    </div>
+                    <div class="mt-3">
+                        <div class="text-2xl font-black text-slate-900">1.31 <span class="text-sm font-normal text-slate-500">%</span></div>
+                        <p class="text-xs text-slate-500 mt-1">사고 100건당 사망자 수</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 법규위반 항목별 상세 분석 및 위험도 탐지 -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-xl font-bold text-slate-900">2. 법규위반 항목별 상세 분석 및 위험도 탐지</h3>
+            </div>
+
+            <!-- Charts & Summary Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Visual Chart (2 Cols) -->
+                <div class="lg:col-span-2 glass-card p-6 rounded-2xl shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2">
+                        <div>
+                            <h4 class="font-bold text-slate-900">법규위반별 사고 건수 및 치사율 비교</h4>
+                            <p class="text-xs text-slate-500">사고 발생 빈도(막대)와 치명도 치사율(선)의 매핑</p>
+                        </div>
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md font-medium self-start sm:self-auto">이중 축 시각화</span>
+                    </div>
+                    <div class="relative h-72 sm:h-80 mt-4">
+                        <canvas id="violationChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Insight Focus Box (1 Col) -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-sm flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>핵심 분석 인사이트</span>
+                        </div>
+                        <h4 class="text-lg font-bold mt-2">사고 다발 vs 고위험 치명 사고의 분리 관리 필요</h4>
+                        
+                        <div class="mt-4 space-y-4 text-xs sm:text-sm text-slate-300">
+                            <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700">
+                                <span class="font-bold text-amber-400 block mb-1">최다 사고 원인 (54%)</span>
+                                <p class="text-slate-300"><strong>안전운전 의무 불이행</strong>은 전체 사고의 절반 이상(105,542건)을 차지하여 가장 집중적인 계도가 필요합니다.</p>
+                            </div>
+                            <div class="p-3 bg-rose-950/40 rounded-xl border border-rose-800/50">
+                                <span class="font-bold text-rose-400 block mb-1">최고 치명도 (2.64%)</span>
+                                <p class="text-slate-300"><strong>중앙선 침범</strong>은 치사율이 전체 평균(1.31%)의 2배에 달하는 최고 위험 위반 항목입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-slate-400 pt-3 border-t border-slate-800">
+                        <i class="fa-solid fa-circle-info mr-1"></i> 단순 사고 건수 줄이기와 사망자 감소를 위한 위반별 맞춤 대응책 필요.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Table -->
+            <div class="glass-card rounded-2xl shadow-sm overflow-hidden border border-slate-200">
+                <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+                    <h4 class="font-bold text-slate-900 text-sm sm:text-base">법규위반 항목별 데이터 명세</h4>
+                    <span class="text-xs text-slate-500">단위: 건, 명, %</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-600">
+                        <thead class="text-xs text-slate-700 uppercase bg-slate-100/70 border-b border-slate-200">
+                            <tr>
+                                <th scope="col" class="px-6 py-3.5 font-bold">법규위반 항목</th>
+                                <th scope="col" class="px-6 py-3.5 font-bold text-right">사고 건수 (건)</th>
+                                <th scope="col" class="px-6 py-3.5 font-bold text-right">사망자 수 (명)</th>
+                                <th scope="col" class="px-6 py-3.5 font-bold text-right">치사율 (%)</th>
+                                <th scope="col" class="px-6 py-3.5 font-bold text-center">위험도 평가 및 비고</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-6 py-4 font-semibold text-slate-900 flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                    <span>안전운전 의무 불이행</span>
+                                </td>
+                                <td class="px-6 py-4 text-right font-medium">105,542</td>
+                                <td class="px-6 py-4 text-right font-medium text-slate-900">1,652</td>
+                                <td class="px-6 py-4 text-right font-bold text-amber-600">1.57%</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">
+                                        발생·사망자 1위 (54%)
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition bg-rose-50/30">
+                                <td class="px-6 py-4 font-semibold text-slate-900 flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-rose-600"></span>
+                                    <span>중앙선 침범</span>
+                                </td>
+                                <td class="px-6 py-4 text-right font-medium">7,186</td>
+                                <td class="px-6 py-4 text-right font-medium text-slate-900">190</td>
+                                <td class="px-6 py-4 text-right font-black text-rose-600">2.64%</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 text-xs font-bold rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+                                        🚨 최고 위험 (치사율 최고)
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-6 py-4 font-semibold text-slate-900 flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                    <span>신호위반</span>
+                                </td>
+                                <td class="px-6 py-4 text-right font-medium">22,514</td>
+                                <td class="px-6 py-4 text-right font-medium text-slate-900">205</td>
+                                <td class="px-6 py-4 text-right font-semibold text-slate-700">0.91%</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                                        다빈도 사고 항목
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-6 py-4 font-semibold text-slate-900 flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                                    <span>보행자 보호의무 위반</span>
+                                </td>
+                                <td class="px-6 py-4 text-right font-medium">7,681</td>
+                                <td class="px-6 py-4 text-right font-medium text-slate-900">120</td>
+                                <td class="px-6 py-4 text-right font-bold text-orange-600">1.56%</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-orange-100 text-orange-800">
+                                        인명 피해 고위험
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-6 py-4 font-semibold text-slate-900 flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                    <span>안전거리 미확보</span>
+                                </td>
+                                <td class="px-6 py-4 text-right font-medium">24,949</td>
+                                <td class="px-6 py-4 text-right font-medium text-slate-900">59</td>
+                                <td class="px-6 py-4 text-right font-semibold text-slate-600">0.24%</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700">
+                                        다발 / 저치사율
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-6 py-4 font-semibold text-slate-900 flex items-center space-x-2">
+                                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                    <span>교차로 통행방법 위반</span>
+                                </td>
+                                <td class="px-6 py-4 text-right font-medium">9,735</td>
+                                <td class="px-6 py-4 text-right font-medium text-slate-900">31</td>
+                                <td class="px-6 py-4 text-right font-semibold text-slate-600">0.32%</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700">
+                                        저속 사고 비중 높음
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 요일별 사고 발생 추이 및 치명도 분석 -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-xl font-bold text-slate-900">3. 요일별 사고 발생 추이 및 치명도 분석</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 요일별 핵심 요약 Card 3개 -->
+                <div class="space-y-4">
+                    <!-- 금요일 -->
+                    <div class="glass-card p-4 rounded-xl border-l-4 border-l-blue-500 flex items-start space-x-3">
+                        <div class="p-2.5 bg-blue-50 text-blue-600 rounded-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-calendar-day text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-blue-600 uppercase">사고 발생 최다 요일</span>
+                            <h5 class="text-base font-bold text-slate-900">금요일 <span class="text-blue-600">(31,823건)</span></h5>
+                            <p class="text-xs text-slate-600 mt-1">주말 대비 이동량 및 통행량 급증 영향. 반면 치사율은 1.20%로 요일 중 가장 낮음.</p>
+                        </div>
+                    </div>
+
+                    <!-- 월요일 -->
+                    <div class="glass-card p-4 rounded-xl border-l-4 border-l-amber-500 flex items-start space-x-3">
+                        <div class="p-2.5 bg-amber-50 text-amber-600 rounded-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-user-slash text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-amber-600 uppercase">사망자 최다 요일</span>
+                            <h5 class="text-base font-bold text-slate-900">월요일 <span class="text-amber-600">(사망 397명)</span></h5>
+                            <p class="text-xs text-slate-600 mt-1">주 초반 피로도 및 업무성 통행 증가 등으로 인한 사망 사고 집중 경향.</p>
+                        </div>
+                    </div>
+
+                    <!-- 일요일 -->
+                    <div class="glass-card p-4 rounded-xl border-l-4 border-l-rose-500 flex items-start space-x-3">
+                        <div class="p-2.5 bg-rose-50 text-rose-600 rounded-lg shrink-0 mt-0.5">
+                            <i class="fa-solid fa-gauge-high text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-rose-600 uppercase">치사율 최고 요일</span>
+                            <h5 class="text-base font-bold text-slate-900">일요일 <span class="text-rose-600">(치사율 1.44%)</span></h5>
+                            <p class="text-xs text-slate-600 mt-1">사고 발생은 최저(20,241건)이나, 휴일 한적한 도로 환경에서의 과속 및 방심으로 치명도 급증.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 요일별 차트 (2 Cols) -->
+                <div class="lg:col-span-2 glass-card p-6 rounded-2xl shadow-sm">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                        <div>
+                            <h4 class="font-bold text-slate-900">요일별 치사율(%) 추이 시각화</h4>
+                            <p class="text-xs text-slate-500">사고 발생 건수 대비 인명 사망 비율 비교</p>
+                        </div>
+                        <span class="text-xs bg-rose-50 text-rose-600 font-semibold px-2.5 py-1 rounded-md border border-rose-100">일요일/월요일 주의</span>
+                    </div>
+                    <div class="relative h-64 sm:h-72 mt-4">
+                        <canvas id="dayChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 종합 결론 및 정책 제언 -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-xl font-bold text-slate-900">4. 종합 결론 및 맞춤형 정책 제언</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Policy 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-blue-300 transition space-y-3">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-900">전방 주시 및 집중력 강화</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        전체 사고의 절반 이상(54%)이 '안전운전 의무 불이행'에 기인합니다. 운전 중 휴대전화 사용, DMB 시청, 졸음운전에 대한 대국민 경각심 고취 및 집중 계도 캠페인이 필수적입니다.
+                    </p>
+                    <div class="pt-2 text-xs font-semibold text-blue-600 flex items-center">
+                        <span>단속 & 캠페인 강화</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+                    </div>
+                </div>
+
+                <!-- Policy 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-rose-300 transition space-y-3">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-900">치명적 고위험 위반 엄단</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        치사율이 높은 중앙선 침범(2.64%)과 보행자 보호의무 위반(1.56%)에 대해서는 무인 단속 장비 확충 및 중앙분리대 설치 등 물리적 안전 시설 보강과 엄격한 단속이 시급합니다.
+                    </p>
+                    <div class="pt-2 text-xs font-semibold text-rose-600 flex items-center">
+                        <span>시설 보강 & 엄정 단속</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+                    </div>
+                </div>
+
+                <!-- Policy 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:border-indigo-300 transition space-y-3">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-900">요일별 차별화 관리 전략</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        사고가 집중되는 금요일에는 정체 관리 및 순찰에 집중하고, 치사율이 높은 일요일과 사망자가 많은 월요일에는 과속 단속 및 안전거리 확보 중심의 원격 제어가 요구됩니다.
+                    </p>
+                    <div class="pt-2 text-xs font-semibold text-indigo-600 flex items-center">
+                        <span>맞춤형 교통 제어</span>
+                        <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 border-t border-slate-200 bg-white py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-400 space-y-1">
+            <p>2025년 교통사고 통계 데이터 기반 심층 분석 웹보고서</p>
+            <p>© 2026 Traffic Safety Analysis Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chart Scripts -->
+    <script>
+        // Chart 1: Violation Chart
+        const ctxViolation = document.getElementById('violationChart').getContext('2d');
+        new Chart(ctxViolation, {
+            type: 'bar',
+            data: {
+                labels: ['안전운전 의무 불이행', '중앙선 침범', '신호위반', '보행자 보호위반', '안전거리 미확보', '교차로 통행위반'],
+                datasets: [
+                    {
+                        label: '사고 건수 (건)',
+                        data: [105542, 7186, 22514, 7681, 24949, 9735],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: '치사율 (%)',
+                        data: [1.57, 2.64, 0.91, 1.56, 0.24, 0.32],
+                        type: 'line',
+                        borderColor: '#ef4444',
+                        backgroundColor: '#ef4444',
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: '사고 건수 (건)', font: { size: 11 } },
+                        grid: { color: 'rgba(241, 245, 249, 1)' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: '치사율 (%)', font: { size: 11 } },
+                        grid: { drawOnChartArea: false },
+                        min: 0,
+                        max: 3.0
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top', labels: { font: { size: 12 } } }
+                }
+            }
+        });
+
+        // Chart 2: Day of Week Chart
+        const ctxDay = document.getElementById('dayChart').getContext('2d');
+        new Chart(ctxDay, {
+            type: 'line',
+            data: {
+                labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+                datasets: [
+                    {
+                        label: '치사율 (%)',
+                        data: [1.37, 1.28, 1.25, 1.26, 1.20, 1.30, 1.44],
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        borderWidth: 3,
+                        pointBackgroundColor: ['#6366f1', '#6366f1', '#6366f1', '#6366f1', '#3b82f6', '#6366f1', '#ef4444'],
+                        pointRadius: [5, 5, 5, 5, 5, 5, 7]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { grid: { display: false } },
+                    y: {
+                        min: 1.0,
+                        max: 1.6,
+                        title: { display: true, text: '치사율 (%)' },
+                        grid: { color: 'rgba(241, 245, 249, 1)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
